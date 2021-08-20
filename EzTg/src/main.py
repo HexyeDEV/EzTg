@@ -1,4 +1,9 @@
 import requests
+from methods.user.get_author_id import get_author_id as getauthorid
+from methods.chat.get_chat_id import get_chat_id as getchatid
+from methods.message.editMessageText import editMessageText as edit_message_text
+from methods.message.deleteMessage import deleteMessage as delete_message
+from methods.message.sendMessage import sendMessage as send_message
 
 class Parse(dict):
     def __getattr__(*args):
@@ -17,7 +22,6 @@ class Parse(dict):
     __setattr__ = dict.__setitem__
 
     __delattr__ = dict.__delitem__
-    
 
 
 class EzTg:
@@ -27,11 +31,10 @@ class EzTg:
         self.token = token
         self.api = "https://api.telegram.org/bot{}/{}"
         self.session = requests.Session()
-        
-        
+
     """Send method to api website"""
     def send(self, method, **kwargs):
-       return Parse(
+        return Parse(
            self.session.post(
                url=self.api.format(self.token, method),
                json=kwargs,
@@ -51,30 +54,27 @@ class EzTg:
 
     """sendMessage method"""
     def sendMessage(self, chat_id, text, parse_mode='Markdown', disable_web_page_preview=False, disable_notification=False, reply_to_message_id=None, reply_markup=None):
-        """sendMessage(chat_id, message_id, text, parse_mode(Optional), reply_to_message_id(Optional))"""       
-        return self.send('sendMessage', chat_id=chat_id, text=text, parse_mode=parse_mode, disable_web_page_preview=disable_web_page_preview, disable_notification=disable_notification, reply_to_message_id=reply_to_message_id, reply_markup=reply_markup)
+        """bot.sendMessage(chat_id, message_id, text, parse_mode(Optional), reply_to_message_id(Optional))"""
+        send_message(self, chat_id, text, parse_mode, disable_web_page_preview, disable_notification, reply_to_message_id, reply_markup)
 
     """deleteMessage method"""
     def deleteMessage(self, chat_id, message_id):
         """bot.deleteMessage(chat_id, message_id)"""
-        return self.send('deleteMessage', chat_id=chat_id, message_id=message_id)
-
+        delete_message(self, chat_id, message_id)
 
     """editMessageText method"""
     def editMessageText(self, chat_id, message_id, text, inline_message_id=None, parse_mode='Markdown', entities=None, disable_web_page_preview=False, reply_markup=None):
         """bot.edit(chat_id, message_id, text)"""
-        return self.send('editMessageText', chat_id=chat_id, message_id=message_id, inline_message_id=inline_message_id, text=text, parse_mode=parse_mode, entities=entities, disable_web_page_preview=disable_web_page_preview, reply_markup=reply_markup)
-
+        edit_message_text(self, chat_id, text, inline_message_id, parse_mode, entities, disable_web_page_preview, reply_markup)
 
     """User info Methods"""
 
     """Get user id from message"""
     def get_author_id(self, message):
-        return message['from']['id']
-    
+        getauthorid(self, message)
 
     """Chat info Methods"""
 
     """Get chat id from message"""
     def get_chat_id(self, message):
-        return message['chat']['id']
+        getchatid(self, message)
