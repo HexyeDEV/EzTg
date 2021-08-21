@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="EzTg",
-    version="0.0.3",
+    version="0.0.4",
     author="Hexye",
     author_email="dragonsale22@gmail.com",
     description="An api wrapper for telegram easy to use according to telegram core.",
