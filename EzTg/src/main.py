@@ -23,14 +23,20 @@ class Parse(dict):
 
     __delattr__ = dict.__delitem__
 
+class TokenError(Exception):
+    pass
+
 
 class EzTg:
 
     """Giving token"""
     def __init__(self, token):
-        self.token = token
-        self.api = "https://api.telegram.org/bot{}/{}"
-        self.session = requests.Session()
+        if requests.get('https://api.telegram.org/bot'+token).json()['ok'] == False:
+            raise TokenError('The token you provided is wrong')
+        else:
+            self.token = token
+            self.api = "https://api.telegram.org/bot{}/{}"
+            self.session = requests.Session()
 
     """Send method to api website"""
     def send(self, method, **kwargs):
