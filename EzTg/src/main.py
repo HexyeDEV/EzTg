@@ -1,9 +1,9 @@
 import requests
-from methods.user.get_author_id import get_author_id as getauthorid
-from methods.chat.get_chat_id import get_chat_id as getchatid
-from methods.message.editMessageText import editMessageText as edit_message_text
-from methods.message.deleteMessage import deleteMessage as delete_message
-from methods.message.sendMessage import sendMessage as send_message
+from src import get_author_id as getauthorid
+from src import get_chat_id as getchatid
+from src import editMessageText as edit_message_text
+from src import deleteMessage as delete_message
+from src import sendMessage as send_message
 
 class Parse(dict):
     def __getattr__(*args):
@@ -46,7 +46,7 @@ class EzTg:
                json=kwargs,
            ).json()
        )
-   
+
     """Run main"""
     def start_polling(self, callback):
         offset = None
