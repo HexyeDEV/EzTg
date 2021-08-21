@@ -1,9 +1,5 @@
 import requests
-from src import get_author_id as getauthorid
-from src import get_chat_id as getchatid
-from src import editMessageText as edit_message_text
-from src import deleteMessage as delete_message
-from src import sendMessage as send_message
+
 
 class Parse(dict):
     def __getattr__(*args):
