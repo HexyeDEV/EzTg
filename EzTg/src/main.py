@@ -59,28 +59,35 @@ class EzTg:
                 offset = update[-1].update_id + 1
 
     """sendMessage method"""
-    def sendMessage(self, chat_id, text, parse_mode='Markdown', disable_web_page_preview=False, disable_notification=False, reply_to_message_id=None, reply_markup=None):
+    def sendMessage(self, chat_id, text, parse_mode='Markdown', disable_web_page_preview=False,
+                    disable_notification=False,
+                    reply_to_message_id=None, reply_markup=None):
         """bot.sendMessage(chat_id, message_id, text, parse_mode(Optional), reply_to_message_id(Optional))"""
-        send_message(self, chat_id, text, parse_mode, disable_web_page_preview, disable_notification, reply_to_message_id, reply_markup)
+        return self.send('sendMessage', chat_id=chat_id, text=text, parse_mode=parse_mode,
+                         disable_web_page_preview=disable_web_page_preview, disable_notification=disable_notification,
+                         reply_to_message_id=reply_to_message_id, reply_markup=reply_markup)
 
     """deleteMessage method"""
     def deleteMessage(self, chat_id, message_id):
         """bot.deleteMessage(chat_id, message_id)"""
-        delete_message(self, chat_id, message_id)
+        return self.send('deleteMessage', chat_id=chat_id, message_id=message_id)
 
     """editMessageText method"""
-    def editMessageText(self, chat_id, message_id, text, inline_message_id=None, parse_mode='Markdown', entities=None, disable_web_page_preview=False, reply_markup=None):
+    def editMessageText(self, chat_id, message_id, text, inline_message_id=None, parse_mode='Markdown', entities=None,
+                        disable_web_page_preview=False, reply_markup=None):
         """bot.edit(chat_id, message_id, text)"""
-        edit_message_text(self, chat_id, text, inline_message_id, parse_mode, entities, disable_web_page_preview, reply_markup)
+        return self.send('editMessageText', chat_id=chat_id, message_id=message_id, inline_message_id=inline_message_id,
+                         text=text, parse_mode=parse_mode, entities=entities,
+                         disable_web_page_preview=disable_web_page_preview, reply_markup=reply_markup)
 
     """User info Methods"""
 
     """Get user id from message"""
     def get_author_id(self, message):
-        getauthorid(self, message)
+        return message['from']['id']
 
     """Chat info Methods"""
 
     """Get chat id from message"""
     def get_chat_id(self, message):
-        getchatid(self, message)
+        return message['chat']['id']
