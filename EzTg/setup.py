@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="EzTg",
-    version="0.0.5",
+    version="0.1.3",
     author="Hexye",
     author_email="dragonsale22@gmail.com",
     description="An api wrapper for telegram easy to use according to telegram core.",
@@ -17,7 +17,9 @@ setuptools.setup(
         "Bug Tracker": "https://github.com/HexyeDEV/EzTg/issues",
     },
     classifiers=[
-        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
