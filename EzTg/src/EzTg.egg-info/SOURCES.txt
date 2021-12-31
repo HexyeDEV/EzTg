@@ -1,0 +1,5 @@
+setup.py
+src/EzTg.egg-info/PKG-INFO
+src/EzTg.egg-info/SOURCES.txt
+src/EzTg.egg-info/dependency_links.txt
+src/EzTg.egg-info/top_level.txt

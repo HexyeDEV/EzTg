@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: EzTg
+Version: 0.1.4
+Summary: An api wrapper for telegram easy to use according to telegram core.
+Home-page: https://github.com/HexyeDEV/EzTg/
+Author: Hexye
+Author-email: dragonsale22@gmail.com
+License: UNKNOWN
+Download-URL: https://github.com/HexyeDEV/EzTg/releases
+Project-URL: Bug Tracker, https://github.com/HexyeDEV/EzTg/issues
+Description: EzTg
+        ==========
+        
+        .. image:: https://img.shields.io/pypi/v/EzTg
+           :target: https://pypi.python.org/pypi/EzTg
+           :alt: PyPI version info
+        .. image:: https://img.shields.io/pypi/pyversions/EzTg
+           :target: https://pypi.python.org/pypi/EzTg
+           :alt: PyPI supported Python versions
+        
+        Python api wrapper for telegram, easy to clearly choose every parameter for the method you are calling.
+        
+        DOCS
+        -------------
+        
+        https://purring-action-2bd.notion.site/EzTg-d39484e308d04fc6aa8eee592e4eeabe
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
