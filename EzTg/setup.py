@@ -5,7 +5,7 @@ with open("../README.rst", "r") as fh:
 
 setuptools.setup(
     name="EzTg",
-    version="0.1.5",
+    version="0.2.0",
     author="Hexye",
     author_email="dragonsale22@gmail.com",
     description=
