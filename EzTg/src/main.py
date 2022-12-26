@@ -31,18 +31,20 @@ class EzTg:
             self.token = token
             self.api = "https://api.telegram.org/bot{}/{}"
 
-    """Send method to api website"""
-
     async def send(self, method, **kwargs):
+        """Send a request to the telegram api
+        :param method: The method to be called
+        :param kwargs: The parameters to be passed to the method"""
         async with aiohttp.request("POST",
                                    self.api.format(self.token, method),
                                    json=kwargs) as response:
             r = await response.json()
             return Parse(r)
 
-    """Run main"""
-
     async def start_polling(self, callback, callback_query=None):
+        """Run the bot and wait for updates
+        :param callback: A callback function that will be called when a new message update is received
+        :param callback_query: A callback function that will be called when a new callback_query update is received"""
         offset = None
         while 1:
             update = await self.send("getUpdates", offset=offset)
@@ -56,7 +58,6 @@ class EzTg:
                         await callback_query(x)
                         offset = update[-1].update_id + 1
 
-    """sendMessage method"""
 
     async def sendMessage(
         self,
@@ -68,6 +69,14 @@ class EzTg:
         reply_to_message_id=None,
         reply_markup=None,
     ):
+        """sendMessage method
+        :param chat_id: Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+        :param text: Text of the message to be sent
+        :param parse_mode: Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message.
+        :param disable_web_page_preview: Disables link previews for links in this message
+        :param disable_notification: Sends the message silently. Users will receive a notification with no sound.
+        :param reply_to_message_id: If the message is a reply, ID of the original message
+        :param reply_markup: Additional interface options. Use the InlineKeyboard class to create a new inline keyboard"""
         if reply_markup:
             return await self.send(
                 "sendMessage",
@@ -90,14 +99,15 @@ class EzTg:
                 reply_to_message_id=reply_to_message_id,
             )
 
-    """deleteMessage method"""
 
     async def deleteMessage(self, chat_id, message_id):
+        """deleteMessage method
+        :param chat_id: Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+        :param message_id: Identifier of the message to delete"""
         return await self.send("deleteMessage",
                                chat_id=chat_id,
                                message_id=message_id)
 
-    """editMessageText method"""
 
     async def editMessageText(
         self,
@@ -110,6 +120,15 @@ class EzTg:
         disable_web_page_preview=False,
         reply_markup=None,
     ):
+        """editMessageText method
+        :param chat_id: Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+        :param message_id: Identifier of the message to edit
+        :param inline_message_id: Identifier of the inline message
+        :param text: New text of the message
+        :param parse_mode: Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message.
+        :param entities: List of special entities that appear in message text, which can be specified instead of parse_mode
+        :param disable_web_page_preview: Disables link previews for links in this message
+        :param reply_markup: Additional interface options. Use the InlineKeyboard class to create a new inline keyboard"""
         if reply_markup:
             return await self.send(
                 "editMessageText",
@@ -134,13 +153,17 @@ class EzTg:
                 disable_web_page_preview=disable_web_page_preview,
             )
 
-    """forwardMessage method"""
 
     async def forwardMessage(self,
                              chat_id,
                              from_chat_id,
                              message_id,
                              disable_notification=False):
+        """forwardMessage method
+        :param chat_id: Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+        :param from_chat_id: Unique identifier for the chat where the original message was sent
+        :param message_id: Message identifier in the chat specified in from_chat_id
+        :param disable_notification: Sends the message silently. Users will receive a notification with no sound."""
         return await self.send(
             "forwardMessage",
             chat_id=chat_id,
@@ -149,12 +172,11 @@ class EzTg:
             disable_notification=disable_notification,
         )
 
-    """getMe method"""
 
     async def getMe(self):
+        """getMe method"""
         return await self.send("getMe")
 
-    """copyMessage method"""
 
     async def copyMessage(
         self,
@@ -166,6 +188,14 @@ class EzTg:
         allow_sending_without_reply=False,
         reply_markup=None,
     ):
+        """copyMessage method
+        :param chat_id: Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+        :param message_id: Identifier of the message to copy
+        :param caption: New caption of the message
+        :param disable_notification: Sends the message silently. Users will receive a notification with no sound.
+        :param reply_to_message_id: If the message is a reply, ID of the original message
+        :param allow_sending_without_reply: Pass True, if the message should be sent even if the specified replied-to message is not found
+        :param reply_markup: Additional interface options. Use the InlineKeyboard class to create a new inline keyboard"""
         if reply_markup:
             return await self.send(
                 "copyMessage",
@@ -188,12 +218,12 @@ class EzTg:
                 allow_sending_without_reply=allow_sending_without_reply,
             )
 
-    """exportChatInviteLink method"""
 
     async def exportChatInviteLink(self, chat_id):
+        """exportChatInviteLink method
+        :param chat_id: Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)"""
         return await self.send("exportChatInviteLink", chat_id=chat_id)
 
-    """createChatInviteLink method"""
 
     async def createChatInviteLink(
         self,
@@ -203,6 +233,12 @@ class EzTg:
         member_limit=None,
         creates_join_request=False,
     ):
+        """createChatInviteLink method
+        :param chat_id: Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+        :param name: Point in time (Unix timestamp) when the link will expire
+        :param expire_date: Point in time (Unix timestamp) when the link will expire
+        :param member_limit: Maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999
+        :param creates_join_request: Pass True to create a new chat members invite link that can be used only by users invited by another chat administrator; requires appropriate administrator rights in the chat"""
         return await self.send(
             "createChatInviteLink",
             chat_id=chat_id,
@@ -212,17 +248,21 @@ class EzTg:
             creates_join_request=creates_join_request,
         )
 
-    """setChatPhoto method"""
-
     async def setChatPhoto(self, chat_id, photo):
+        """setChatPhoto method
+        :param chat_id: Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+        :param photo: New chat photo, uploaded using multipart/form-data"""
         return await self.send("setChatPhoto", chat_id=chat_id, photo=photo)
 
-    """pinChatMessage method"""
 
     async def pinChatMessage(self,
                              chat_id,
                              message_id,
                              disable_notification=False):
+        """pinChatMessage method
+        :param chat_id: Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+        :param message_id: Identifier of a message to pin
+        :param disable_notification: Pass True, if it is not necessary to send a notification to all chat members about the new pinned message. Notifications are always disabled in channels."""
         return await self.send(
             "pinChatMessage",
             chat_id=chat_id,
@@ -230,24 +270,28 @@ class EzTg:
             disable_notification=disable_notification,
         )
 
-    """unpinChatMessage method"""
-
     async def unpinChatMessage(self, chat_id, message_id):
+        """unpinChatMessage method
+        :param chat_id: Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+        :param message_id: Identifier of a message to unpin. If not specified, the most recent pinned message (by sending date) will be unpinned."""
         return await self.send("unpinChatMessage",
                                chat_id=chat_id,
                                message_id=message_id)
 
-    """leaveChat method"""
 
     async def leaveChat(self, chat_id):
+        """leaveChat method
+        :param chat_id: Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername"""
         return await self.send("leaveChat", chat_id=chat_id)
 
-    """Get user id from message"""
 
     async def get_author_id(self, message):
+        """Get author id from message
+        :param message: Message object"""
         return message["from"]["id"]
 
-    """Get chat id from message"""
 
     async def get_chat_id(self, message):
+        """Get chat id from message
+        :param message: Message object"""
         return message["chat"]["id"]
