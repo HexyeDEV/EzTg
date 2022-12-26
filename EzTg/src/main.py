@@ -3,13 +3,18 @@ import requests
 
 
 class Parse(dict):
-
     def __getattr__(*args):
         args = dict.get(*args)
 
-        return (Parse(args) if isinstance(args, dict) else
-                [[Parse(y) for y in x] if isinstance(x, list) else Parse(x)
-                 for x in args] if isinstance(args, list) else args)
+        return (
+            Parse(args)
+            if isinstance(args, dict)
+            else [
+                [Parse(y) for y in x] if isinstance(x, list) else Parse(x) for x in args
+            ]
+            if isinstance(args, list)
+            else args
+        )
 
     __setattr__ = dict.__setitem__
 
@@ -24,8 +29,10 @@ class EzTg:
     """Giving token"""
 
     def __init__(self, token):
-        if (requests.get("https://api.telegram.org/bot" + token +
-                         "/getMe").json()["ok"] == False):
+        if (
+            requests.get("https://api.telegram.org/bot" + token + "/getMe").json()["ok"]
+            == False
+        ):
             raise TokenError("The token you provided is wrong")
         else:
             self.token = token
@@ -34,9 +41,9 @@ class EzTg:
     """Send method to api website"""
 
     async def send(self, method, **kwargs):
-        async with aiohttp.request("POST",
-                                   self.api.format(self.token, method),
-                                   json=kwargs) as response:
+        async with aiohttp.request(
+            "POST", self.api.format(self.token, method), json=kwargs
+        ) as response:
             r = await response.json()
             return Parse(r)
 
@@ -93,9 +100,7 @@ class EzTg:
     """deleteMessage method"""
 
     async def deleteMessage(self, chat_id, message_id):
-        return await self.send("deleteMessage",
-                               chat_id=chat_id,
-                               message_id=message_id)
+        return await self.send("deleteMessage", chat_id=chat_id, message_id=message_id)
 
     """editMessageText method"""
 
@@ -136,11 +141,9 @@ class EzTg:
 
     """forwardMessage method"""
 
-    async def forwardMessage(self,
-                             chat_id,
-                             from_chat_id,
-                             message_id,
-                             disable_notification=False):
+    async def forwardMessage(
+        self, chat_id, from_chat_id, message_id, disable_notification=False
+    ):
         return await self.send(
             "forwardMessage",
             chat_id=chat_id,
@@ -219,10 +222,7 @@ class EzTg:
 
     """pinChatMessage method"""
 
-    async def pinChatMessage(self,
-                             chat_id,
-                             message_id,
-                             disable_notification=False):
+    async def pinChatMessage(self, chat_id, message_id, disable_notification=False):
         return await self.send(
             "pinChatMessage",
             chat_id=chat_id,
@@ -233,9 +233,9 @@ class EzTg:
     """unpinChatMessage method"""
 
     async def unpinChatMessage(self, chat_id, message_id):
-        return await self.send("unpinChatMessage",
-                               chat_id=chat_id,
-                               message_id=message_id)
+        return await self.send(
+            "unpinChatMessage", chat_id=chat_id, message_id=message_id
+        )
 
     """leaveChat method"""
 
