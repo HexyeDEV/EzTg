@@ -5,7 +5,7 @@ with open("../README.rst", "r") as fh:
 
 setuptools.setup(
     name="EzTg",
-    version="0.1.4",
+    version="0.1.5",
     author="Hexye",
     author_email="dragonsale22@gmail.com",
     description="An api wrapper for telegram easy to use according to telegram core.",
@@ -20,6 +20,9 @@ setuptools.setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
