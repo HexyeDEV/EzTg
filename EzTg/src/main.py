@@ -58,7 +58,6 @@ class EzTg:
                         await callback_query(x)
                         offset = update[-1].update_id + 1
 
-
     async def sendMessage(
         self,
         chat_id,
@@ -99,7 +98,6 @@ class EzTg:
                 reply_to_message_id=reply_to_message_id,
             )
 
-
     async def deleteMessage(self, chat_id, message_id):
         """deleteMessage method
         :param chat_id: Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
@@ -107,7 +105,6 @@ class EzTg:
         return await self.send("deleteMessage",
                                chat_id=chat_id,
                                message_id=message_id)
-
 
     async def editMessageText(
         self,
@@ -153,7 +150,6 @@ class EzTg:
                 disable_web_page_preview=disable_web_page_preview,
             )
 
-
     async def forwardMessage(self,
                              chat_id,
                              from_chat_id,
@@ -172,11 +168,9 @@ class EzTg:
             disable_notification=disable_notification,
         )
 
-
     async def getMe(self):
         """getMe method"""
         return await self.send("getMe")
-
 
     async def copyMessage(
         self,
@@ -218,12 +212,10 @@ class EzTg:
                 allow_sending_without_reply=allow_sending_without_reply,
             )
 
-
     async def exportChatInviteLink(self, chat_id):
         """exportChatInviteLink method
         :param chat_id: Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)"""
         return await self.send("exportChatInviteLink", chat_id=chat_id)
-
 
     async def createChatInviteLink(
         self,
@@ -254,7 +246,6 @@ class EzTg:
         :param photo: New chat photo, uploaded using multipart/form-data"""
         return await self.send("setChatPhoto", chat_id=chat_id, photo=photo)
 
-
     async def pinChatMessage(self,
                              chat_id,
                              message_id,
@@ -278,18 +269,15 @@ class EzTg:
                                chat_id=chat_id,
                                message_id=message_id)
 
-
     async def leaveChat(self, chat_id):
         """leaveChat method
         :param chat_id: Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername"""
         return await self.send("leaveChat", chat_id=chat_id)
 
-
     async def get_author_id(self, message):
         """Get author id from message
         :param message: Message object"""
         return message["from"]["id"]
-
 
     async def get_chat_id(self, message):
         """Get chat id from message
