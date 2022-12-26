@@ -3,18 +3,13 @@ import requests
 
 
 class Parse(dict):
+
     def __getattr__(*args):
         args = dict.get(*args)
 
-        return (
-            Parse(args)
-            if isinstance(args, dict)
-            else [
-                [Parse(y) for y in x] if isinstance(x, list) else Parse(x) for x in args
-            ]
-            if isinstance(args, list)
-            else args
-        )
+        return (Parse(args) if isinstance(args, dict) else
+                [[Parse(y) for y in x] if isinstance(x, list) else Parse(x)
+                 for x in args] if isinstance(args, list) else args)
 
     __setattr__ = dict.__setitem__
 
@@ -29,10 +24,8 @@ class EzTg:
     """Giving token"""
 
     def __init__(self, token):
-        if (
-            requests.get("https://api.telegram.org/bot" + token + "/getMe").json()["ok"]
-            == False
-        ):
+        if (requests.get("https://api.telegram.org/bot" + token +
+                         "/getMe").json()["ok"] == False):
             raise TokenError("The token you provided is wrong")
         else:
             self.token = token
@@ -42,9 +35,9 @@ class EzTg:
         """Send a request to the telegram api
         :param method: The method to be called
         :param kwargs: The parameters to be passed to the method"""
-        async with aiohttp.request(
-            "POST", self.api.format(self.token, method), json=kwargs
-        ) as response:
+        async with aiohttp.request("POST",
+                                   self.api.format(self.token, method),
+                                   json=kwargs) as response:
             r = await response.json()
             return Parse(r)
 
@@ -109,7 +102,9 @@ class EzTg:
         """deleteMessage method
         :param chat_id: Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
         :param message_id: Identifier of the message to delete"""
-        return await self.send("deleteMessage", chat_id=chat_id, message_id=message_id)
+        return await self.send("deleteMessage",
+                               chat_id=chat_id,
+                               message_id=message_id)
 
     async def editMessageText(
         self,
@@ -155,9 +150,11 @@ class EzTg:
                 disable_web_page_preview=disable_web_page_preview,
             )
 
-    async def forwardMessage(
-        self, chat_id, from_chat_id, message_id, disable_notification=False
-    ):
+    async def forwardMessage(self,
+                             chat_id,
+                             from_chat_id,
+                             message_id,
+                             disable_notification=False):
         """forwardMessage method
         :param chat_id: Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
         :param from_chat_id: Unique identifier for the chat where the original message was sent
@@ -249,7 +246,10 @@ class EzTg:
         :param photo: New chat photo, uploaded using multipart/form-data"""
         return await self.send("setChatPhoto", chat_id=chat_id, photo=photo)
 
-    async def pinChatMessage(self, chat_id, message_id, disable_notification=False):
+    async def pinChatMessage(self,
+                             chat_id,
+                             message_id,
+                             disable_notification=False):
         """pinChatMessage method
         :param chat_id: Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
         :param message_id: Identifier of a message to pin
@@ -265,9 +265,9 @@ class EzTg:
         """unpinChatMessage method
         :param chat_id: Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
         :param message_id: Identifier of a message to unpin. If not specified, the most recent pinned message (by sending date) will be unpinned."""
-        return await self.send(
-            "unpinChatMessage", chat_id=chat_id, message_id=message_id
-        )
+        return await self.send("unpinChatMessage",
+                               chat_id=chat_id,
+                               message_id=message_id)
 
     async def leaveChat(self, chat_id):
         """leaveChat method
