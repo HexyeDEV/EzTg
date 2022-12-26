@@ -41,22 +41,20 @@ class EzTg:
             return Parse(r)
 
     """Run main"""
-    async def start_polling(self, callback):
+    async def start_polling(self, callback, callback_query=None):
         offset = None
-        type = None
         while 1:
             update = await self.send("getUpdates", offset=offset)
-            if "message" in update.keys():
-                type = "message"
-            elif "callback_query" in update.keys():
-                type = "callback_query"
             self.update = update
-            if update and type == "message":
+            if update:
                 for x in update:
-                    await callback(x)
-                offset = update[-1].update_id + 1
-            #elif update and type == "callback_query":
-                #tbd i dont know how to do it
+                    if "message" in x.keys():
+                        await callback(x)
+                        offset = update[-1].update_id + 1
+                    elif "callback_query" in x.keys() and callback_query:
+                        await callback_query(x)
+                        offset = update[-1].update_id + 1
+
 
     """sendMessage method"""
     async def sendMessage(self, chat_id, text, parse_mode='Markdown', disable_web_page_preview=False,

@@ -15,6 +15,19 @@ class InlineKeyboard:
         :param url: The url of the button"""
         self.keyboard.append([])
         self.keyboard[-1].append({"text": text, "url": url})
+
+    def callback(self, text, callback_data):
+        """Add a new callback button to the keyboard
+        :param text: The text of the button
+        :param callback_data: The callback data of the button"""
+        self.keyboard[-1].append({"text": text, "callback_data": callback_data})
+    
+    def callback_new_row(self, text, callback_data):
+        """Add a new callback button to the keyboard in a new row
+        :param text: The text of the button
+        :param callback_data: The callback data of the button"""
+        self.keyboard.append([])
+        self.keyboard[-1].append({"text": text, "callback_data": callback_data})
     
     def send(self):
         """Return the keyboard"""
