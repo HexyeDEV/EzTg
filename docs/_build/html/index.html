@@ -90,6 +90,8 @@
    <span class="n">message</span> <span class="o">=</span> <span class="n">update</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">]</span>
    <span class="k">if</span> <span class="n">message</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;/start&quot;</span><span class="p">:</span>
       <span class="k">await</span> <span class="n">bot</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="n">chat_id</span><span class="o">=</span><span class="n">smessage</span><span class="p">[</span><span class="s2">&quot;chat&quot;</span><span class="p">][</span><span class="s2">&quot;id&quot;</span><span class="p">],</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
+
+<span class="k">await</span> <span class="n">bot</span><span class="o">.</span><span class="n">start_polling</span><span class="p">(</span><span class="n">on_message</span><span class="p">)</span>
 </pre></div>
 </div>
 <section id="how-to-use-the-send-method">
@@ -103,6 +105,8 @@
    <span class="n">message</span> <span class="o">=</span> <span class="n">update</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">]</span>
    <span class="k">if</span> <span class="n">message</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;/start&quot;</span><span class="p">:</span>
       <span class="k">await</span> <span class="n">bot</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;sendMessage&quot;</span><span class="p">,</span> <span class="n">chat_id</span><span class="o">=</span><span class="n">smessage</span><span class="p">[</span><span class="s2">&quot;chat&quot;</span><span class="p">][</span><span class="s2">&quot;id&quot;</span><span class="p">],</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
+
+<span class="k">await</span> <span class="n">bot</span><span class="o">.</span><span class="n">start_polling</span><span class="p">(</span><span class="n">on_message</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Here the send method has been used tho send a message. You can use the send method for any method of the telegram api and can be useful for example if such method is not yet implemented in EzTg.</p>
