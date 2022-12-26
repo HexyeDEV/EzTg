@@ -8,8 +8,7 @@ setuptools.setup(
     version="0.2.0",
     author="Hexye",
     author_email="dragonsale22@gmail.com",
-    description=
-    "An api wrapper for telegram easy to use according to telegram core.",
+    description="An api wrapper for telegram easy to use according to telegram core.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/HexyeDEV/EzTg/",
