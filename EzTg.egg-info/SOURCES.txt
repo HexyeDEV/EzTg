@@ -1,0 +1,10 @@
+README.rst
+setup.py
+EzTg/__init__.py
+EzTg/inlinekeyboard.py
+EzTg/main.py
+EzTg.egg-info/PKG-INFO
+EzTg.egg-info/SOURCES.txt
+EzTg.egg-info/dependency_links.txt
+EzTg.egg-info/requires.txt
+EzTg.egg-info/top_level.txt
