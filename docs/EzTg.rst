@@ -1,8 +1,6 @@
 EzTg package
 ============
 
-Submodules
-----------
 
 EzTg.inlinekeyboard module
 --------------------------
