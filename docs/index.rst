@@ -56,7 +56,7 @@ Here the send method has been used tho send a message. You can use the send meth
 
 Other Examples:
 ===============
-.toctree
+.toctree::
    :maxdepth: 2
    :caption: Examples:
 
