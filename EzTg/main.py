@@ -15,7 +15,6 @@ class Parse(dict):
 
     __delattr__ = dict.__delitem__
 
-
 class TokenError(Exception):
     pass
 
@@ -57,6 +56,7 @@ class EzTg:
         offset = None
         while 1:
             update = await self.send("getUpdates", offset=offset)
+            update = update.result
             self.update = update
             if update:
                 for x in update:

@@ -1,2 +1,5 @@
-from .inlinekeyboard import *
-from .main import *
+__title__ = 'EzTg'
+__author__ = 'Hexye'
+
+from .inlinekeyboard import InlineKeyboard
+from .main import EzTg
