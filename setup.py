@@ -1,7 +1,6 @@
 import setuptools
 
-with open("./README.rst", "r") as fh:
-    long_description = fh.read()
+long_description = "An api wrapper for telegram easy to use. Coerent according to telegram core.\n\nGithub: https://github.com/HexyeDev/EzTg\n\nDocumentation: https://eztg.readthedocs.io/en/latest/"
 
 setuptools.setup(
     name="EzTg",
