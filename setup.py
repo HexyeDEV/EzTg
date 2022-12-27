@@ -1,11 +1,11 @@
 import setuptools
 
-with open("index.rst", "r") as fh:
+with open("./index.rst", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="EzTg",
-    version="0.2.1",
+    version="0.2.2",
     author="Hexye",
     author_email="dragonsale22@gmail.com",
     description=
