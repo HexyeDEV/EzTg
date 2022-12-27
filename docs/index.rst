@@ -43,7 +43,7 @@ Here is a little example of using the send method.::
 
    async def on_message(update):
       message = update.message
-      if message["text"] == "/start":
+      if message.text == "/start":
          await bot.send("sendMessage", chat_id=message.chat.id, text="Hello World!")
    
    async def main()
