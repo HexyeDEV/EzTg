@@ -15,6 +15,7 @@ class Parse(dict):
 
     __delattr__ = dict.__delitem__
 
+
 class TokenError(Exception):
     pass
 
@@ -78,7 +79,7 @@ class EzTg:
         reply_markup=None,
     ):
         """Send a message to a chat.
-        
+
         Parameters
         ----------
         chat_id: `int`
@@ -369,7 +370,7 @@ class EzTg:
 
     async def get_chat_id(self, message):
         """Get chat id from message.
-        
+
         Parameters
         ----------
         message: `dict`
