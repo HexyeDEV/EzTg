@@ -22,9 +22,9 @@ This is a quick start guide to get you started with EzTg.::
    bot = EzTg("TOKEN")
 
    async def on_message(update):
-      message = update["message"]
-      if message["text"] == "/start":
-         await bot.sendMessage(chat_id=smessage["chat"]["id"], text="Hello World!")
+      message = update.message
+      if message.text == "/start":
+         await bot.sendMessage(chat_id=message.chat.id, text="Hello World!")
    
    async def main()
       await bot.start_polling(on_message)
@@ -42,9 +42,9 @@ Here is a little example of using the send method.::
    bot = EzTg("TOKEN")
 
    async def on_message(update):
-      message = update["message"]
+      message = update.message
       if message["text"] == "/start":
-         await bot.send("sendMessage", chat_id=smessage["chat"]["id"], text="Hello World!")
+         await bot.send("sendMessage", chat_id=message.chat.id, text="Hello World!")
    
    async def main()
       await bot.start_polling(on_message)
