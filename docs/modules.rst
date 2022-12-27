@@ -5,3 +5,4 @@ EzTg
    :maxdepth: 4
 
    EzTg
+   setup

@@ -50,7 +50,7 @@ Here is a little example of using the send method.::
       await bot.start_polling(on_message)
    
    if __name__ == "__main__":
-      asyncio.run(main())s
+      asyncio.run(main())
 
 Here the send method has been used tho send a message. You can use the send method for any method of the telegram api and can be useful for example if such method is not yet implemented in EzTg.
 

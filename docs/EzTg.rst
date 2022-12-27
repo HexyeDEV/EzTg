@@ -7,6 +7,11 @@ Submodules
 EzTg.inlinekeyboard module
 --------------------------
 
+.. automodule:: EzTg.inlinekeyboard
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 EzTg.main module
 ----------------
 
@@ -19,11 +24,6 @@ Module contents
 ---------------
 
 .. automodule:: EzTg
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-.. automodule:: EzTg.inlinekeyboard
    :members:
    :undoc-members:
    :show-inheritance:
