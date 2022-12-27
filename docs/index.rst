@@ -11,6 +11,7 @@ Welcome to EzTg's documentation!
    :caption: Contents:
 
    modules
+   inlinekeyboard
 
 Quick Start
 ===========
@@ -53,14 +54,6 @@ Here is a little example of using the send method.::
       asyncio.run(main())
 
 Here the send method has been used tho send a message. You can use the send method for any method of the telegram api and can be useful for example if such method is not yet implemented in EzTg.
-
-Other Examples:
-===============
-.toctree::
-   :maxdepth: 2
-   :caption: Examples:
-
-   inlinekeyboard
 
 
 Indices and tables

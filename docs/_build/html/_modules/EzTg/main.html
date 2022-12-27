@@ -87,7 +87,7 @@
     <span class="k">pass</span></div>
 
 
-<div class="viewcode-block" id="EzTg"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.EzTg">[docs]</a><span class="k">class</span> <span class="nc">EzTg</span><span class="p">:</span>
+<div class="viewcode-block" id="TelegramClient"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.TelegramClient">[docs]</a><span class="k">class</span> <span class="nc">TelegramClient</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://api.telegram.org/bot&quot;</span> <span class="o">+</span> <span class="n">token</span> <span class="o">+</span>
@@ -97,7 +97,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">token</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">api</span> <span class="o">=</span> <span class="s2">&quot;https://api.telegram.org/bot</span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">&quot;</span>
 
-<div class="viewcode-block" id="EzTg.send"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.EzTg.send">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="TelegramClient.send"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.TelegramClient.send">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Send a request to the telegram api.</span>
 
 <span class="sd">        Parameters</span>
@@ -112,7 +112,7 @@
             <span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
             <span class="k">return</span> <span class="n">Parse</span><span class="p">(</span><span class="n">r</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EzTg.start_polling"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.EzTg.start_polling">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">start_polling</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">,</span> <span class="n">callback_query</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="TelegramClient.start_polling"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.TelegramClient.start_polling">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">start_polling</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">,</span> <span class="n">callback_query</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Start polling for updates.</span>
 
 <span class="sd">        Parameters</span>
@@ -135,7 +135,7 @@
                         <span class="k">await</span> <span class="n">callback_query</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
                         <span class="n">offset</span> <span class="o">=</span> <span class="n">update</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">update_id</span> <span class="o">+</span> <span class="mi">1</span></div>
 
-<div class="viewcode-block" id="EzTg.sendMessage"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.EzTg.sendMessage">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">sendMessage</span><span class="p">(</span>
+<div class="viewcode-block" id="TelegramClient.sendMessage"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.TelegramClient.sendMessage">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">sendMessage</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">chat_id</span><span class="p">,</span>
         <span class="n">text</span><span class="p">,</span>
@@ -185,7 +185,7 @@
                 <span class="n">reply_to_message_id</span><span class="o">=</span><span class="n">reply_to_message_id</span><span class="p">,</span>
             <span class="p">)</span></div>
 
-<div class="viewcode-block" id="EzTg.deleteMessage"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.EzTg.deleteMessage">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">deleteMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chat_id</span><span class="p">,</span> <span class="n">message_id</span><span class="p">):</span>
+<div class="viewcode-block" id="TelegramClient.deleteMessage"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.TelegramClient.deleteMessage">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">deleteMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chat_id</span><span class="p">,</span> <span class="n">message_id</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Delete a message.</span>
 
 <span class="sd">        Parameters</span>
@@ -198,7 +198,7 @@
                                <span class="n">chat_id</span><span class="o">=</span><span class="n">chat_id</span><span class="p">,</span>
                                <span class="n">message_id</span><span class="o">=</span><span class="n">message_id</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EzTg.editMessageText"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.EzTg.editMessageText">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">editMessageText</span><span class="p">(</span>
+<div class="viewcode-block" id="TelegramClient.editMessageText"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.TelegramClient.editMessageText">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">editMessageText</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">chat_id</span><span class="p">,</span>
         <span class="n">message_id</span><span class="p">,</span>
@@ -253,7 +253,7 @@
                 <span class="n">disable_web_page_preview</span><span class="o">=</span><span class="n">disable_web_page_preview</span><span class="p">,</span>
             <span class="p">)</span></div>
 
-<div class="viewcode-block" id="EzTg.forwardMessage"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.EzTg.forwardMessage">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">forwardMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="TelegramClient.forwardMessage"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.TelegramClient.forwardMessage">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">forwardMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                              <span class="n">chat_id</span><span class="p">,</span>
                              <span class="n">from_chat_id</span><span class="p">,</span>
                              <span class="n">message_id</span><span class="p">,</span>
@@ -278,11 +278,11 @@
             <span class="n">disable_notification</span><span class="o">=</span><span class="n">disable_notification</span><span class="p">,</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="EzTg.getMe"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.EzTg.getMe">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">getMe</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TelegramClient.getMe"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.TelegramClient.getMe">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">getMe</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get information about the bot.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;getMe&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EzTg.copyMessage"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.EzTg.copyMessage">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">copyMessage</span><span class="p">(</span>
+<div class="viewcode-block" id="TelegramClient.copyMessage"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.TelegramClient.copyMessage">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">copyMessage</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">chat_id</span><span class="p">,</span>
         <span class="n">message_id</span><span class="p">,</span>
@@ -332,7 +332,7 @@
                 <span class="n">allow_sending_without_reply</span><span class="o">=</span><span class="n">allow_sending_without_reply</span><span class="p">,</span>
             <span class="p">)</span></div>
 
-<div class="viewcode-block" id="EzTg.exportChatInviteLink"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.EzTg.exportChatInviteLink">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">exportChatInviteLink</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chat_id</span><span class="p">):</span>
+<div class="viewcode-block" id="TelegramClient.exportChatInviteLink"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.TelegramClient.exportChatInviteLink">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">exportChatInviteLink</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chat_id</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Export a chat invite link.</span>
 
 <span class="sd">        Parameters</span>
@@ -341,7 +341,7 @@
 <span class="sd">            The chat id you want to make the invite link.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;exportChatInviteLink&quot;</span><span class="p">,</span> <span class="n">chat_id</span><span class="o">=</span><span class="n">chat_id</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EzTg.createChatInviteLink"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.EzTg.createChatInviteLink">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">createChatInviteLink</span><span class="p">(</span>
+<div class="viewcode-block" id="TelegramClient.createChatInviteLink"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.TelegramClient.createChatInviteLink">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">createChatInviteLink</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">chat_id</span><span class="p">,</span>
         <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -372,7 +372,7 @@
             <span class="n">creates_join_request</span><span class="o">=</span><span class="n">creates_join_request</span><span class="p">,</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="EzTg.setChatPhoto"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.EzTg.setChatPhoto">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">setChatPhoto</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chat_id</span><span class="p">,</span> <span class="n">photo</span><span class="p">):</span>
+<div class="viewcode-block" id="TelegramClient.setChatPhoto"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.TelegramClient.setChatPhoto">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">setChatPhoto</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chat_id</span><span class="p">,</span> <span class="n">photo</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Set the chat photo.</span>
 
 <span class="sd">        Parameters</span>
@@ -383,7 +383,7 @@
 <span class="sd">            The photo you want to use.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;setChatPhoto&quot;</span><span class="p">,</span> <span class="n">chat_id</span><span class="o">=</span><span class="n">chat_id</span><span class="p">,</span> <span class="n">photo</span><span class="o">=</span><span class="n">photo</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EzTg.pinChatMessage"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.EzTg.pinChatMessage">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">pinChatMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="TelegramClient.pinChatMessage"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.TelegramClient.pinChatMessage">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">pinChatMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                              <span class="n">chat_id</span><span class="p">,</span>
                              <span class="n">message_id</span><span class="p">,</span>
                              <span class="n">disable_notification</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -404,7 +404,7 @@
             <span class="n">disable_notification</span><span class="o">=</span><span class="n">disable_notification</span><span class="p">,</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="EzTg.unpinChatMessage"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.EzTg.unpinChatMessage">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">unpinChatMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chat_id</span><span class="p">,</span> <span class="n">message_id</span><span class="p">):</span>
+<div class="viewcode-block" id="TelegramClient.unpinChatMessage"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.TelegramClient.unpinChatMessage">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">unpinChatMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chat_id</span><span class="p">,</span> <span class="n">message_id</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Unpin a message.</span>
 
 <span class="sd">        Parameters</span>
@@ -417,7 +417,7 @@
                                <span class="n">chat_id</span><span class="o">=</span><span class="n">chat_id</span><span class="p">,</span>
                                <span class="n">message_id</span><span class="o">=</span><span class="n">message_id</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EzTg.leaveChat"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.EzTg.leaveChat">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">leaveChat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chat_id</span><span class="p">):</span>
+<div class="viewcode-block" id="TelegramClient.leaveChat"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.TelegramClient.leaveChat">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">leaveChat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chat_id</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Leave a chat.</span>
 
 <span class="sd">        Parameters</span>
@@ -426,7 +426,7 @@
 <span class="sd">            The chat id you want to leave.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;leaveChat&quot;</span><span class="p">,</span> <span class="n">chat_id</span><span class="o">=</span><span class="n">chat_id</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EzTg.get_author_id"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.EzTg.get_author_id">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_author_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+<div class="viewcode-block" id="TelegramClient.get_author_id"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.TelegramClient.get_author_id">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_author_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get author id from message.</span>
 
 <span class="sd">        Parameters</span>
@@ -435,7 +435,7 @@
 <span class="sd">            The message object.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">message</span><span class="p">[</span><span class="s2">&quot;from&quot;</span><span class="p">][</span><span class="s2">&quot;id&quot;</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="EzTg.get_chat_id"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.EzTg.get_chat_id">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_chat_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+<div class="viewcode-block" id="TelegramClient.get_chat_id"><a class="viewcode-back" href="../../EzTg.html#EzTg.main.TelegramClient.get_chat_id">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_chat_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get chat id from message.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>

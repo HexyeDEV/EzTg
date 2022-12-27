@@ -49,8 +49,8 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-EzTg.main">EzTg.main module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#EzTg.main.EzTg"><code class="docutils literal notranslate"><span class="pre">EzTg</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#EzTg.main.Parse"><code class="docutils literal notranslate"><span class="pre">Parse</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#EzTg.main.TelegramClient"><code class="docutils literal notranslate"><span class="pre">TelegramClient</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#EzTg.main.TokenError"><code class="docutils literal notranslate"><span class="pre">TokenError</span></code></a></li>
 </ul>
 </li>
@@ -60,6 +60,7 @@
 <li class="toctree-l2"><a class="reference internal" href="setup.html">setup module</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="inlinekeyboard.html">InlineKeyboard</a></li>
 </ul>
 
         </div>
@@ -170,12 +171,18 @@
 <section id="module-EzTg.main">
 <span id="eztg-main-module"></span><h2>EzTg.main module<a class="headerlink" href="#module-EzTg.main" title="Permalink to this heading"></a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="EzTg.main.EzTg">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EzTg.main.</span></span><span class="sig-name descname"><span class="pre">EzTg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#EzTg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.EzTg" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="EzTg.main.Parse">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EzTg.main.</span></span><span class="sig-name descname"><span class="pre">Parse</span></span><a class="reference internal" href="_modules/EzTg/main.html#Parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.Parse" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EzTg.main.TelegramClient">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EzTg.main.</span></span><span class="sig-name descname"><span class="pre">TelegramClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#TelegramClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.TelegramClient" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
-<dt class="sig sig-object py" id="EzTg.main.EzTg.copyMessage">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">copyMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caption</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_notification</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reply_to_message_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_sending_without_reply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reply_markup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#EzTg.copyMessage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.EzTg.copyMessage" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="EzTg.main.TelegramClient.copyMessage">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">copyMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caption</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_notification</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reply_to_message_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_sending_without_reply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reply_markup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#TelegramClient.copyMessage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.TelegramClient.copyMessage" title="Permalink to this definition"></a></dt>
 <dd><p>Copy a message.</p>
 <section id="id4">
 <h3>Parameters<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
@@ -199,8 +206,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="EzTg.main.EzTg.createChatInviteLink">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">createChatInviteLink</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expire_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">member_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">creates_join_request</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#EzTg.createChatInviteLink"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.EzTg.createChatInviteLink" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="EzTg.main.TelegramClient.createChatInviteLink">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">createChatInviteLink</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expire_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">member_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">creates_join_request</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#TelegramClient.createChatInviteLink"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.TelegramClient.createChatInviteLink" title="Permalink to this definition"></a></dt>
 <dd><p>Create a chat invite link.</p>
 <section id="id5">
 <h3>Parameters<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
@@ -220,8 +227,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="EzTg.main.EzTg.deleteMessage">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deleteMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#EzTg.deleteMessage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.EzTg.deleteMessage" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="EzTg.main.TelegramClient.deleteMessage">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deleteMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#TelegramClient.deleteMessage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.TelegramClient.deleteMessage" title="Permalink to this definition"></a></dt>
 <dd><p>Delete a message.</p>
 <section id="id6">
 <h3>Parameters<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
@@ -235,8 +242,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="EzTg.main.EzTg.editMessageText">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">editMessageText</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inline_message_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parse_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Markdown'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_web_page_preview</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reply_markup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#EzTg.editMessageText"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.EzTg.editMessageText" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="EzTg.main.TelegramClient.editMessageText">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">editMessageText</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inline_message_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parse_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Markdown'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_web_page_preview</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reply_markup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#TelegramClient.editMessageText"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.TelegramClient.editMessageText" title="Permalink to this definition"></a></dt>
 <dd><p>Edit a message.</p>
 <section id="id7">
 <h3>Parameters<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
@@ -262,8 +269,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="EzTg.main.EzTg.exportChatInviteLink">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">exportChatInviteLink</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chat_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#EzTg.exportChatInviteLink"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.EzTg.exportChatInviteLink" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="EzTg.main.TelegramClient.exportChatInviteLink">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">exportChatInviteLink</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chat_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#TelegramClient.exportChatInviteLink"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.TelegramClient.exportChatInviteLink" title="Permalink to this definition"></a></dt>
 <dd><p>Export a chat invite link.</p>
 <section id="id8">
 <h3>Parameters<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
@@ -275,8 +282,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="EzTg.main.EzTg.forwardMessage">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">forwardMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_chat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_notification</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#EzTg.forwardMessage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.EzTg.forwardMessage" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="EzTg.main.TelegramClient.forwardMessage">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">forwardMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_chat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_notification</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#TelegramClient.forwardMessage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.TelegramClient.forwardMessage" title="Permalink to this definition"></a></dt>
 <dd><p>Foward a message.</p>
 <section id="id9">
 <h3>Parameters<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
@@ -294,14 +301,14 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="EzTg.main.EzTg.getMe">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">getMe</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#EzTg.getMe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.EzTg.getMe" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="EzTg.main.TelegramClient.getMe">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">getMe</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#TelegramClient.getMe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.TelegramClient.getMe" title="Permalink to this definition"></a></dt>
 <dd><p>Get information about the bot.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="EzTg.main.EzTg.get_author_id">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_author_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#EzTg.get_author_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.EzTg.get_author_id" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="EzTg.main.TelegramClient.get_author_id">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_author_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#TelegramClient.get_author_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.TelegramClient.get_author_id" title="Permalink to this definition"></a></dt>
 <dd><p>Get author id from message.</p>
 <section id="id10">
 <h3>Parameters<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
@@ -313,8 +320,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="EzTg.main.EzTg.get_chat_id">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_chat_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#EzTg.get_chat_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.EzTg.get_chat_id" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="EzTg.main.TelegramClient.get_chat_id">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_chat_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#TelegramClient.get_chat_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.TelegramClient.get_chat_id" title="Permalink to this definition"></a></dt>
 <dd><p>Get chat id from message.</p>
 <section id="id11">
 <h3>Parameters<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h3>
@@ -326,8 +333,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="EzTg.main.EzTg.leaveChat">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">leaveChat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chat_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#EzTg.leaveChat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.EzTg.leaveChat" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="EzTg.main.TelegramClient.leaveChat">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">leaveChat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chat_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#TelegramClient.leaveChat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.TelegramClient.leaveChat" title="Permalink to this definition"></a></dt>
 <dd><p>Leave a chat.</p>
 <section id="id12">
 <h3>Parameters<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h3>
@@ -339,8 +346,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="EzTg.main.EzTg.pinChatMessage">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pinChatMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_notification</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#EzTg.pinChatMessage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.EzTg.pinChatMessage" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="EzTg.main.TelegramClient.pinChatMessage">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pinChatMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_notification</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#TelegramClient.pinChatMessage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.TelegramClient.pinChatMessage" title="Permalink to this definition"></a></dt>
 <dd><p>Pin a message.</p>
 <section id="id13">
 <h3>Parameters<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h3>
@@ -356,8 +363,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="EzTg.main.EzTg.send">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#EzTg.send"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.EzTg.send" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="EzTg.main.TelegramClient.send">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#TelegramClient.send"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.TelegramClient.send" title="Permalink to this definition"></a></dt>
 <dd><p>Send a request to the telegram api.</p>
 <section id="id14">
 <h3>Parameters<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h3>
@@ -371,8 +378,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="EzTg.main.EzTg.sendMessage">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sendMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parse_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Markdown'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_web_page_preview</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_notification</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reply_to_message_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reply_markup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#EzTg.sendMessage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.EzTg.sendMessage" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="EzTg.main.TelegramClient.sendMessage">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sendMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parse_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Markdown'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_web_page_preview</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_notification</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reply_to_message_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reply_markup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#TelegramClient.sendMessage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.TelegramClient.sendMessage" title="Permalink to this definition"></a></dt>
 <dd><p>Send a message to a chat.</p>
 <section id="id15">
 <h3>Parameters<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h3>
@@ -396,8 +403,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="EzTg.main.EzTg.setChatPhoto">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setChatPhoto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">photo</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#EzTg.setChatPhoto"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.EzTg.setChatPhoto" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="EzTg.main.TelegramClient.setChatPhoto">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setChatPhoto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">photo</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#TelegramClient.setChatPhoto"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.TelegramClient.setChatPhoto" title="Permalink to this definition"></a></dt>
 <dd><p>Set the chat photo.</p>
 <section id="id16">
 <h3>Parameters<a class="headerlink" href="#id16" title="Permalink to this heading"></a></h3>
@@ -411,8 +418,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="EzTg.main.EzTg.start_polling">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">start_polling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#EzTg.start_polling"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.EzTg.start_polling" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="EzTg.main.TelegramClient.start_polling">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">start_polling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#TelegramClient.start_polling"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.TelegramClient.start_polling" title="Permalink to this definition"></a></dt>
 <dd><p>Start polling for updates.</p>
 <section id="id17">
 <h3>Parameters<a class="headerlink" href="#id17" title="Permalink to this heading"></a></h3>
@@ -426,8 +433,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="EzTg.main.EzTg.unpinChatMessage">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unpinChatMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#EzTg.unpinChatMessage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.EzTg.unpinChatMessage" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="EzTg.main.TelegramClient.unpinChatMessage">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unpinChatMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EzTg/main.html#TelegramClient.unpinChatMessage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.TelegramClient.unpinChatMessage" title="Permalink to this definition"></a></dt>
 <dd><p>Unpin a message.</p>
 <section id="id18">
 <h3>Parameters<a class="headerlink" href="#id18" title="Permalink to this heading"></a></h3>
@@ -440,12 +447,6 @@
 </section>
 </dd></dl>
 
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="EzTg.main.Parse">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EzTg.main.</span></span><span class="sig-name descname"><span class="pre">Parse</span></span><a class="reference internal" href="_modules/EzTg/main.html#Parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EzTg.main.Parse" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
 </dd></dl>
 
 <dl class="py exception">

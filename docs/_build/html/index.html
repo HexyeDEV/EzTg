@@ -41,6 +41,7 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">EzTg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inlinekeyboard.html">InlineKeyboard Quick Start</a></li>
 </ul>
 
         </div>
@@ -77,16 +78,17 @@
 <li class="toctree-l2"><a class="reference internal" href="setup.html">setup module</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="inlinekeyboard.html">InlineKeyboard Quick Start</a></li>
 </ul>
 </div>
 </section>
 <section id="quick-start">
 <h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this heading"></a></h1>
 <p>This is a quick start guide to get you started with EzTg.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">EzTg</span> <span class="kn">import</span> <span class="n">EzTg</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">EzTg</span> <span class="kn">import</span> <span class="n">TelegramClient</span>
 <span class="kn">import</span> <span class="nn">asyncio</span>
 
-<span class="n">bot</span> <span class="o">=</span> <span class="n">EzTg</span><span class="p">(</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">)</span>
+<span class="n">bot</span> <span class="o">=</span> <span class="n">TelegramClient</span><span class="p">(</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">)</span>
 
 <span class="k">async</span> <span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="n">update</span><span class="p">):</span>
    <span class="n">message</span> <span class="o">=</span> <span class="n">update</span><span class="o">.</span><span class="n">message</span>
@@ -103,14 +105,14 @@
 <section id="how-to-use-the-send-method">
 <h2>How to use the send method<a class="headerlink" href="#how-to-use-the-send-method" title="Permalink to this heading"></a></h2>
 <p>Here is a little example of using the send method.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">EzTg</span> <span class="kn">import</span> <span class="n">EzTg</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">EzTg</span> <span class="kn">import</span> <span class="n">TelegramClient</span>
 <span class="kn">import</span> <span class="nn">asyncio</span>
 
-<span class="n">bot</span> <span class="o">=</span> <span class="n">EzTg</span><span class="p">(</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">)</span>
+<span class="n">bot</span> <span class="o">=</span> <span class="n">TelegramClient</span><span class="p">(</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">)</span>
 
 <span class="k">async</span> <span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="n">update</span><span class="p">):</span>
    <span class="n">message</span> <span class="o">=</span> <span class="n">update</span><span class="o">.</span><span class="n">message</span>
-   <span class="k">if</span> <span class="n">message</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;/start&quot;</span><span class="p">:</span>
+   <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s2">&quot;/start&quot;</span><span class="p">:</span>
       <span class="k">await</span> <span class="n">bot</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;sendMessage&quot;</span><span class="p">,</span> <span class="n">chat_id</span><span class="o">=</span><span class="n">message</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
 
 <span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">()</span>

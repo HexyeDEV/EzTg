@@ -3,11 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to EzTg's documentation!
-================================
-
-InlineKeyboard
---------------
+InlineKeyboard Quick Start
+==========================
 
 Here is a quick example of how to use EzTg.InlineKeyboard::
 
@@ -37,19 +34,3 @@ Here is a quick example of how to use EzTg.InlineKeyboard::
         await bot.start_polling(on_message, on_callback)
     
     asyncio.run(main())
-
-Other Examples:
-===============
-.toctree
-   :maxdepth: 2
-   :caption: Examples:
-
-   index
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
