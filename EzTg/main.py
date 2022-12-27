@@ -19,7 +19,7 @@ class TokenError(Exception):
     pass
 
 
-class EzTg:
+class TelegramClient:
 
     def __init__(self, token):
         if (requests.get("https://api.telegram.org/bot" + token +

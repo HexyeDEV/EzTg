@@ -16,10 +16,10 @@ Quick Start
 ===========
 This is a quick start guide to get you started with EzTg.::
 
-   from EzTg import EzTg
+   from EzTg import TelegramClient
    import asyncio
 
-   bot = EzTg("TOKEN")
+   bot = TelegramClient("TOKEN")
 
    async def on_message(update):
       message = update.message
@@ -36,10 +36,10 @@ How to use the send method
 --------------------------
 Here is a little example of using the send method.::
 
-   from EzTg import EzTg
+   from EzTg import TelegramClient
    import asyncio
 
-   bot = EzTg("TOKEN")
+   bot = TelegramClient("TOKEN")
 
    async def on_message(update):
       message = update.message
@@ -53,6 +53,14 @@ Here is a little example of using the send method.::
       asyncio.run(main())
 
 Here the send method has been used tho send a message. You can use the send method for any method of the telegram api and can be useful for example if such method is not yet implemented in EzTg.
+
+Other Examples:
+===============
+.toctree
+   :maxdepth: 2
+   :caption: Examples:
+
+   inlinekeyboard
 
 
 Indices and tables
