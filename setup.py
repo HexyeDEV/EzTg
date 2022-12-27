@@ -1,6 +1,6 @@
 import setuptools
 
-with open("index.rst", "r") as fh:
+with open("./index.rst", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
