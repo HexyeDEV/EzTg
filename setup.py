@@ -9,7 +9,7 @@ setuptools.setup(
     author="Hexye",
     author_email="dragonsale22@gmail.com",
     description=
-    "An api wrapper for telegram easy to use according to telegram core.",
+    "An api wrapper for telegram easy to use. Coerent according to telegram core.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/HexyeDEV/EzTg/",
