@@ -58,4 +58,4 @@ class InlineKeyboard:
 
     def send(self):
         """Return the keyboard."""
-        return self.keyboard
+        return {"inline_keyboard": self.keyboard}

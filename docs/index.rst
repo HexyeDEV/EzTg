@@ -11,24 +11,25 @@ Welcome to EzTg's documentation!
    :caption: Contents:
 
    modules
+   inlinekeyboard
 
 Quick Start
 ===========
 This is a quick start guide to get you started with EzTg.::
 
-   from EzTg import EzTg
+   from EzTg import TelegramClient
    import asyncio
 
-   bot = EzTg("TOKEN")
+   bot = TelegramClient("TOKEN")
 
    async def on_message(update):
       message = update.message
       if message.text == "/start":
          await bot.sendMessage(chat_id=message.chat.id, text="Hello World!")
-   
+
    async def main()
       await bot.start_polling(on_message)
-   
+
    if __name__ == "__main__":
       asyncio.run(main())
 
@@ -36,19 +37,19 @@ How to use the send method
 --------------------------
 Here is a little example of using the send method.::
 
-   from EzTg import EzTg
+   from EzTg import TelegramClient
    import asyncio
 
-   bot = EzTg("TOKEN")
+   bot = TelegramClient("TOKEN")
 
    async def on_message(update):
       message = update.message
       if message.text == "/start":
          await bot.send("sendMessage", chat_id=message.chat.id, text="Hello World!")
-   
+
    async def main()
       await bot.start_polling(on_message)
-   
+
    if __name__ == "__main__":
       asyncio.run(main())
 
