@@ -377,7 +377,7 @@ class TelegramClient:
         message: `dict`
             The message object.s"""
         return message["chat"]["id"]
-    
+
     async def get_sender_object(self, message):
         """Get sender object from message.
 
@@ -386,5 +386,6 @@ class TelegramClient:
         message: `dict`
             The message object."""
         sender = message["from"]
-        user = User(sender["id"], sender["id_bot"], sender["first_name"], sender["last_name"], sender["username"], sender["language_code"], sender["is_premium"], sender["added_to_attachment_menu"])
+        user = User(sender["id"], sender["id_bot"], sender["first_name"], sender["last_name"],
+                    sender["username"], sender["language_code"], sender["is_premium"], sender["added_to_attachment_menu"])
         return user
