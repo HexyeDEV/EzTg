@@ -1,6 +1,6 @@
 class User:
     """Represents a Telegram user or bot.
-    
+
     Attributes
     ----------
     id: `int`
@@ -25,7 +25,21 @@ class User:
         Optional. True, if privacy mode is disabled for the bot. Returned only in getMe.
     supports_inline_queries: `bool`
         Optional. True, if the bot supports inline queries. Returned only in getMe."""
-    def __init__(self, id, is_bot, first_name, last_name, username, language_code, is_premium, added_to_attachment_menu, can_join_groups=None, can_read_all_group_messages=None, supports_inline_queries=None):
+
+    def __init__(
+        self,
+        id,
+        is_bot,
+        first_name,
+        last_name,
+        username,
+        language_code,
+        is_premium,
+        added_to_attachment_menu,
+        can_join_groups=None,
+        can_read_all_group_messages=None,
+        supports_inline_queries=None,
+    ):
         self.id = id
         self.is_bot = is_bot
         self.first_name = first_name
