@@ -216,7 +216,8 @@ class TelegramClient:
     async def getMe(self):
         """Get information about the bot."""
         r = await self.send("getMe")
-        user = User(r["id"], r["is_bot"], r["first_name"], r["last_name"], r["username"], r["language_code"], r["is_premium"], r["added_to_attachment_menu"], r["can_join_groups"], r["can_read_all_group_messages"], r["supports_inline_queries"])
+        user = User(r["id"], r["is_bot"], r["first_name"], r["last_name"], r["username"], r["language_code"], r["is_premium"],
+                    r["added_to_attachment_menu"], r["can_join_groups"], r["can_read_all_group_messages"], r["supports_inline_queries"])
         return user
 
     async def copyMessage(
