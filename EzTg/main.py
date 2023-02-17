@@ -5,13 +5,18 @@ from .user import User
 
 
 class Parse(dict):
-
     def __getattr__(*args):
         args = dict.get(*args)
 
-        return (Parse(args) if isinstance(args, dict) else
-                [[Parse(y) for y in x] if isinstance(x, list) else Parse(x)
-                 for x in args] if isinstance(args, list) else args)
+        return (
+            Parse(args)
+            if isinstance(args, dict)
+            else [
+                [Parse(y) for y in x] if isinstance(x, list) else Parse(x) for x in args
+            ]
+            if isinstance(args, list)
+            else args
+        )
 
     __setattr__ = dict.__setitem__
 
@@ -23,10 +28,11 @@ class TokenError(Exception):
 
 
 class TelegramClient:
-
     def __init__(self, token):
-        if (requests.get("https://api.telegram.org/bot" + token +
-                         "/getMe").json()["ok"] == False):
+        if (
+            requests.get("https://api.telegram.org/bot" + token + "/getMe").json()["ok"]
+            == False
+        ):
             raise TokenError("The token you provided is wrong")
         else:
             self.token = token
@@ -41,9 +47,9 @@ class TelegramClient:
             The method you want to use.
         \*\*kwargs: `dict`
             The parameters you want to send to the method."""
-        async with aiohttp.request("POST",
-                                   self.api.format(self.token, method),
-                                   json=kwargs) as response:
+        async with aiohttp.request(
+            "POST", self.api.format(self.token, method), json=kwargs
+        ) as response:
             r = await response.json()
             return Parse(r)
 
@@ -129,9 +135,7 @@ class TelegramClient:
             The chat id you want to delete the message from.
         message_id: `int`
             The message id you want to delete."""
-        return await self.send("deleteMessage",
-                               chat_id=chat_id,
-                               message_id=message_id)
+        return await self.send("deleteMessage", chat_id=chat_id, message_id=message_id)
 
     async def editMessageText(
         self,
@@ -188,11 +192,9 @@ class TelegramClient:
                 disable_web_page_preview=disable_web_page_preview,
             )
 
-    async def forwardMessage(self,
-                             chat_id,
-                             from_chat_id,
-                             message_id,
-                             disable_notification=False):
+    async def forwardMessage(
+        self, chat_id, from_chat_id, message_id, disable_notification=False
+    ):
         """Foward a message.
 
         Parameters
@@ -216,8 +218,19 @@ class TelegramClient:
     async def getMe(self):
         """Get information about the bot."""
         r = await self.send("getMe")
-        user = User(r["id"], r["is_bot"], r["first_name"], r["last_name"], r["username"], r["language_code"], r["is_premium"],
-                    r["added_to_attachment_menu"], r["can_join_groups"], r["can_read_all_group_messages"], r["supports_inline_queries"])
+        user = User(
+            r["id"],
+            r["is_bot"],
+            r["first_name"],
+            r["last_name"],
+            r["username"],
+            r["language_code"],
+            r["is_premium"],
+            r["added_to_attachment_menu"],
+            r["can_join_groups"],
+            r["can_read_all_group_messages"],
+            r["supports_inline_queries"],
+        )
         return user
 
     async def copyMessage(
@@ -321,10 +334,7 @@ class TelegramClient:
             The photo you want to use."""
         return await self.send("setChatPhoto", chat_id=chat_id, photo=photo)
 
-    async def pinChatMessage(self,
-                             chat_id,
-                             message_id,
-                             disable_notification=False):
+    async def pinChatMessage(self, chat_id, message_id, disable_notification=False):
         """Pin a message.
 
         Parameters
@@ -351,9 +361,9 @@ class TelegramClient:
             The chat id you want to unpin the message.
         message_id: `int`
             The message id you want to unpin."""
-        return await self.send("unpinChatMessage",
-                               chat_id=chat_id,
-                               message_id=message_id)
+        return await self.send(
+            "unpinChatMessage", chat_id=chat_id, message_id=message_id
+        )
 
     async def leaveChat(self, chat_id):
         """Leave a chat.
