@@ -97,7 +97,8 @@ class TelegramClient:
         reply_to_message_id: `int`
             If the message is a reply, ID of the original message.
         reply_markup: `dict`
-            Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user."""
+            Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
+        """
         if reply_markup:
             return await self.send(
                 "sendMessage",
@@ -163,7 +164,8 @@ class TelegramClient:
         disable_web_page_preview: `bool`
             Disable link previews for links in this message.
         reply_markup: `InlineKeyboard.send`
-            Additional interface options. Use the InlineKeyboard class to create a keyboard and use the send method to send it."""
+            Additional interface options. Use the InlineKeyboard class to create a keyboard and use the send method to send it.
+        """
         if reply_markup:
             return await self.send(
                 "editMessageText",
@@ -204,7 +206,8 @@ class TelegramClient:
         message_id: `int`
             The message id you want to forward.
         disable_notification: `bool`
-            Sends the message silently. Users will receive a notification with no sound."""
+            Sends the message silently. Users will receive a notification with no sound.
+        """
         return await self.send(
             "forwardMessage",
             chat_id=chat_id,
@@ -258,7 +261,8 @@ class TelegramClient:
         allow_sending_without_reply: `bool`
             Pass True, if the message should be sent even if the specified replied-to message is not found.
         reply_markup: `InlineKeyboard.send`
-            Additional interface options. Use the InlineKeyboard class to create a keyboard and use the send method to send it."""
+            Additional interface options. Use the InlineKeyboard class to create a keyboard and use the send method to send it.
+        """
         if reply_markup:
             return await self.send(
                 "copyMessage",
@@ -345,7 +349,8 @@ class TelegramClient:
         message_id: `int`
             The message id you want to pin.
         disable_notification: `bool`
-            Sends the message silently. Users will receive a notification with no sound."""
+            Sends the message silently. Users will receive a notification with no sound.
+        """
         return await self.send(
             "pinChatMessage",
             chat_id=chat_id,
