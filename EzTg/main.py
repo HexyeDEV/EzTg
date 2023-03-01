@@ -5,13 +5,18 @@ from .user import User
 
 
 class Parse(dict):
-
     def __getattr__(*args):
         args = dict.get(*args)
 
-        return (Parse(args) if isinstance(args, dict) else
-                [[Parse(y) for y in x] if isinstance(x, list) else Parse(x)
-                 for x in args] if isinstance(args, list) else args)
+        return (
+            Parse(args)
+            if isinstance(args, dict)
+            else [
+                [Parse(y) for y in x] if isinstance(x, list) else Parse(x) for x in args
+            ]
+            if isinstance(args, list)
+            else args
+        )
 
     __setattr__ = dict.__setitem__
 
@@ -23,10 +28,11 @@ class TokenError(Exception):
 
 
 class TelegramClient:
-
     def __init__(self, token):
-        if (requests.get("https://api.telegram.org/bot" + token +
-                         "/getMe").json()["ok"] == False):
+        if (
+            requests.get("https://api.telegram.org/bot" + token + "/getMe").json()["ok"]
+            == False
+        ):
             raise TokenError("The token you provided is wrong")
         else:
             self.token = token
@@ -41,9 +47,9 @@ class TelegramClient:
             The method you want to use.
         \*\*kwargs: `dict`
             The parameters you want to send to the method."""
-        async with aiohttp.request("POST",
-                                   self.api.format(self.token, method),
-                                   json=kwargs) as response:
+        async with aiohttp.request(
+            "POST", self.api.format(self.token, method), json=kwargs
+        ) as response:
             r = await response.json()
             return Parse(r)
 
@@ -97,7 +103,8 @@ class TelegramClient:
         reply_to_message_id: `int`
             If the message is a reply, ID of the original message.
         reply_markup: `dict`
-            Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user."""
+            Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
+        """
         if reply_markup:
             return await self.send(
                 "sendMessage",
@@ -129,9 +136,7 @@ class TelegramClient:
             The chat id you want to delete the message from.
         message_id: `int`
             The message id you want to delete."""
-        return await self.send("deleteMessage",
-                               chat_id=chat_id,
-                               message_id=message_id)
+        return await self.send("deleteMessage", chat_id=chat_id, message_id=message_id)
 
     async def editMessageText(
         self,
@@ -163,7 +168,8 @@ class TelegramClient:
         disable_web_page_preview: `bool`
             Disable link previews for links in this message.
         reply_markup: `InlineKeyboard.send`
-            Additional interface options. Use the InlineKeyboard class to create a keyboard and use the send method to send it."""
+            Additional interface options. Use the InlineKeyboard class to create a keyboard and use the send method to send it.
+        """
         if reply_markup:
             return await self.send(
                 "editMessageText",
@@ -188,11 +194,9 @@ class TelegramClient:
                 disable_web_page_preview=disable_web_page_preview,
             )
 
-    async def forwardMessage(self,
-                             chat_id,
-                             from_chat_id,
-                             message_id,
-                             disable_notification=False):
+    async def forwardMessage(
+        self, chat_id, from_chat_id, message_id, disable_notification=False
+    ):
         """Foward a message.
 
         Parameters
@@ -204,7 +208,8 @@ class TelegramClient:
         message_id: `int`
             The message id you want to forward.
         disable_notification: `bool`
-            Sends the message silently. Users will receive a notification with no sound."""
+            Sends the message silently. Users will receive a notification with no sound.
+        """
         return await self.send(
             "forwardMessage",
             chat_id=chat_id,
@@ -258,7 +263,8 @@ class TelegramClient:
         allow_sending_without_reply: `bool`
             Pass True, if the message should be sent even if the specified replied-to message is not found.
         reply_markup: `InlineKeyboard.send`
-            Additional interface options. Use the InlineKeyboard class to create a keyboard and use the send method to send it."""
+            Additional interface options. Use the InlineKeyboard class to create a keyboard and use the send method to send it.
+        """
         if reply_markup:
             return await self.send(
                 "copyMessage",
@@ -332,10 +338,7 @@ class TelegramClient:
             The photo you want to use."""
         return await self.send("setChatPhoto", chat_id=chat_id, photo=photo)
 
-    async def pinChatMessage(self,
-                             chat_id,
-                             message_id,
-                             disable_notification=False):
+    async def pinChatMessage(self, chat_id, message_id, disable_notification=False):
         """Pin a message.
 
         Parameters
@@ -345,7 +348,8 @@ class TelegramClient:
         message_id: `int`
             The message id you want to pin.
         disable_notification: `bool`
-            Sends the message silently. Users will receive a notification with no sound."""
+            Sends the message silently. Users will receive a notification with no sound.
+        """
         return await self.send(
             "pinChatMessage",
             chat_id=chat_id,
@@ -362,9 +366,9 @@ class TelegramClient:
             The chat id you want to unpin the message.
         message_id: `int`
             The message id you want to unpin."""
-        return await self.send("unpinChatMessage",
-                               chat_id=chat_id,
-                               message_id=message_id)
+        return await self.send(
+            "unpinChatMessage", chat_id=chat_id, message_id=message_id
+        )
 
     async def leaveChat(self, chat_id):
         """Leave a chat.
