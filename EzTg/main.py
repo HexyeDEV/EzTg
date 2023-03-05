@@ -408,9 +408,7 @@ class TelegramClient:
             The message object."""
 
         sender = message["from"]
-        user = User(
-            sender
-        )
+        user = User(sender)
         return user
 
     async def get_user_object(self, user) -> User:
@@ -420,9 +418,7 @@ class TelegramClient:
         ----------
         user: `dict`
             The user dict."""
-        user = User(
-            user
-        )
+        user = User(user)
         return user
 
     async def get_entity_object(self, entity) -> Chat:
