@@ -1,6 +1,6 @@
 class Location:
     """Represents a point on the map.
-    
+
     Attributes
     ----------
     longitude: `float`
