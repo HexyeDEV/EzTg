@@ -1,9 +1,10 @@
-from .user import User
 from .chat import Chat
+from .user import User
+
 
 class Message:
     """Represents a message.
-    
+
     Attributes
     ----------
     message_id: `int`
@@ -99,48 +100,48 @@ class Message:
     """
 
     def __init__(self, data):
-        self.message_id = data['message_id']
-        self.message_thread_id = data.get('message_thread_id')
-        self.from_user = User(data.get('from'))
-        self.sender_chat = Chat(data.get('sender_chat'))
-        self.date = data['date']
-        self.chat = Chat(data['chat'])
-        self.forward_from = User(data.get('forward_from'))
-        self.forward_from_chat = Chat(data.get('forward_from_chat'))
-        self.forward_from_message_id = data.get('forward_from_message_id')
-        self.forward_signature = data.get('forward_signature')
-        self.forward_sender_name = data.get('forward_sender_name')
-        self.forward_date = data.get('forward_date')
-        self.is_topic_message = data.get('is_topic_message')
-        self.is_automatic_forward = data.get('is_automatic_forward')
-        self.reply_to_message = Message(data.get('reply_to_message'))
-        self.via_bot = User(data.get('via_bot'))
-        self.edit_date = data.get('edit_date')
-        self.has_protected_content = data.get('has_protected_content')
-        self.media_group_id = data.get('media_group_id')
-        self.author_signature = data.get('author_signature')
-        self.text = data.get('text')
-        self.animation = data.get('animation')
-        self.audio = data.get('audio')
-        self.document = data.get('document')
-        self.photo = data.get('photo')
-        self.sticker = data.get('sticker')
-        self.video = data.get('video')
-        self.video_note = data.get('video_note')
-        self.voice = data.get('voice')
-        self.caption = data.get('caption')
-        self.caption_entities = data.get('caption_entities')
-        self.has_media_spoiler = data.get('has_media_spoiler')
-        self.contact = data.get('contact')
-        self.dice = data.get('dice')
-        self.game = data.get('game')
-        self.poll = data.get('poll')
-        self.venue = data.get('venue')
-        self.location = data.get('location')
-        self.new_chat_members = data.get('new_chat_members')
+        self.message_id = data["message_id"]
+        self.message_thread_id = data.get("message_thread_id")
+        self.from_user = User(data.get("from"))
+        self.sender_chat = Chat(data.get("sender_chat"))
+        self.date = data["date"]
+        self.chat = Chat(data["chat"])
+        self.forward_from = User(data.get("forward_from"))
+        self.forward_from_chat = Chat(data.get("forward_from_chat"))
+        self.forward_from_message_id = data.get("forward_from_message_id")
+        self.forward_signature = data.get("forward_signature")
+        self.forward_sender_name = data.get("forward_sender_name")
+        self.forward_date = data.get("forward_date")
+        self.is_topic_message = data.get("is_topic_message")
+        self.is_automatic_forward = data.get("is_automatic_forward")
+        self.reply_to_message = Message(data.get("reply_to_message"))
+        self.via_bot = User(data.get("via_bot"))
+        self.edit_date = data.get("edit_date")
+        self.has_protected_content = data.get("has_protected_content")
+        self.media_group_id = data.get("media_group_id")
+        self.author_signature = data.get("author_signature")
+        self.text = data.get("text")
+        self.animation = data.get("animation")
+        self.audio = data.get("audio")
+        self.document = data.get("document")
+        self.photo = data.get("photo")
+        self.sticker = data.get("sticker")
+        self.video = data.get("video")
+        self.video_note = data.get("video_note")
+        self.voice = data.get("voice")
+        self.caption = data.get("caption")
+        self.caption_entities = data.get("caption_entities")
+        self.has_media_spoiler = data.get("has_media_spoiler")
+        self.contact = data.get("contact")
+        self.dice = data.get("dice")
+        self.game = data.get("game")
+        self.poll = data.get("poll")
+        self.venue = data.get("venue")
+        self.location = data.get("location")
+        self.new_chat_members = data.get("new_chat_members")
         if self.new_chat_members:
             self.new_chat_members = [User(x) for x in self.new_chat_members]
-        self.left_chat_member = data.get('left_chat_member')
+        self.left_chat_member = data.get("left_chat_member")
         if self.left_chat_member:
             self.left_chat_member = User(self.left_chat_member)
-        self.new_chat_title = data.get('new_chat_title')
+        self.new_chat_title = data.get("new_chat_title")
