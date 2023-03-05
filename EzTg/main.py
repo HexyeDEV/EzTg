@@ -409,14 +409,7 @@ class TelegramClient:
         
         sender = message["from"]
         user = User(
-            sender["id"],
-            sender["id_bot"],
-            sender["first_name"],
-            sender["last_name"],
-            sender["username"],
-            sender["language_code"],
-            sender["is_premium"],
-            sender["added_to_attachment_menu"],
+            sender
         )
         return user
 
@@ -428,14 +421,7 @@ class TelegramClient:
         user: `dict`
             The user dict."""
         user = User(
-            user["id"],
-            user["id_bot"],
-            user["first_name"],
-            user["last_name"],
-            user["username"],
-            user["language_code"],
-            user["is_premium"],
-            user["added_to_attachment_menu"],
+            user
         )
         return user
 

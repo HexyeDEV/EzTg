@@ -28,26 +28,16 @@ class User:
 
     def __init__(
         self,
-        id,
-        is_bot,
-        first_name,
-        last_name,
-        username,
-        language_code,
-        is_premium,
-        added_to_attachment_menu,
-        can_join_groups=None,
-        can_read_all_group_messages=None,
-        supports_inline_queries=None,
+        data
     ):
-        self.id = id
-        self.is_bot = is_bot
-        self.first_name = first_name
-        self.last_name = last_name
-        self.username = username
-        self.language_code = language_code
-        self.is_premium = is_premium
-        self.added_to_attachment_menu = added_to_attachment_menu
-        self.can_join_groups = can_join_groups
-        self.can_read_all_group_messages = can_read_all_group_messages
-        self.supports_inline_queries = supports_inline_queries
+        self.id = data["id"]
+        self.is_bot = data["is_bot"]
+        self.first_name = data["first_name"]
+        self.last_name = data.get("last_name")
+        self.username = data.get("username")
+        self.language_code = data.get("language_code")
+        self.is_premium = data.get("is_premium")
+        self.added_to_attachment_menu = data.get("added_to_attachment_menu")
+        self.can_join_groups = data.get("can_join_groups")
+        self.can_read_all_group_messages = data.get("can_read_all_group_messages")
+        self.supports_inline_queries = data.get("supports_inline_queries")

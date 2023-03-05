@@ -1,3 +1,5 @@
+from .chatphoto import ChatPhoto
+
 class Chat:
     """Represents a telegram chat.
     
@@ -69,6 +71,8 @@ class Chat:
         self.last_name = data.get("last_name")
         self.is_forum = data.get("is_forum")
         self.photo = data.get("photo")
+        if self.photo:
+            self.photo = ChatPhoto(self.photo)
         self.active_usernames = data.get("active_usernames")
         self.emoji_status_custom_emoji_id = data.get("emoji_status_custom_emoji_id")
         self.bio = data.get("bio")
