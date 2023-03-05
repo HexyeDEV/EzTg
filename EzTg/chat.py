@@ -71,12 +71,12 @@ class Chat:
         self.is_forum = data.get("is_forum")
         self.photo = data.get("photo")
         self.active_usernames = data.get("active_usernames")
-        self.emoji_status_custom_emoji_id = data.get("emoji_status_custom_emoji_id")
+        self.emoji_status_custom_emoji_id = data.get(
+            "emoji_status_custom_emoji_id")
         self.bio = data.get("bio")
         self.has_private_forwards = data.get("has_private_forwards")
         self.has_restricted_voice_and_video_messages = data.get(
-            "has_restricted_voice_and_video_messages"
-        )
+            "has_restricted_voice_and_video_messages")
         self.join_to_send_messages = data.get("join_to_send_messages")
         self.join_by_request = data.get("join_by_request")
         self.description = data.get("description")
@@ -86,8 +86,7 @@ class Chat:
         self.slow_mode_delay = data.get("slow_mode_delay")
         self.message_auto_delete_time = data.get("message_auto_delete_time")
         self.has_aggressive_anti_spam_enabled = data.get(
-            "has_aggressive_anti_spam_enabled"
-        )
+            "has_aggressive_anti_spam_enabled")
         self.has_hidden_members = data.get("has_hidden_members")
         self.has_protected_content = data.get("has_protected_content")
         self.sticket_set_name = data.get("sticket_set_name")
