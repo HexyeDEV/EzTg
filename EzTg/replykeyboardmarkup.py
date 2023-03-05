@@ -57,7 +57,7 @@ class ReplyKeyboardMarkup:
 
     def send(self):
         return {
-            "reply_markup_keyboard": self.keyboard,
+            "reply_markup": self.keyboard,
             "is_persistent": self.is_persistent,
             "resize_keyboard": self.resize_keyboard,
             "one_time_keyboard": self.one_time_keyboard,
