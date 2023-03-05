@@ -2,6 +2,7 @@ import aiohttp
 import requests
 
 from .user import User
+from .chat import Chat
 
 
 class Parse(dict):
@@ -398,13 +399,14 @@ class TelegramClient:
             The message object.s"""
         return message["chat"]["id"]
 
-    async def get_sender_object(self, message):
+    async def get_sender_object(self, message) -> User:
         """Get sender object from message.
 
         Parameters
         ----------
         message: `dict`
             The message object."""
+        
         sender = message["from"]
         user = User(
             sender["id"],
@@ -417,3 +419,41 @@ class TelegramClient:
             sender["added_to_attachment_menu"],
         )
         return user
+
+    async def get_user_object(self, user) -> User:
+        """Get user object from user dict.
+        
+        Parameters
+        ----------
+        user: `dict`
+            The user dict."""
+        user = User(
+            user["id"],
+            user["id_bot"],
+            user["first_name"],
+            user["last_name"],
+            user["username"],
+            user["language_code"],
+            user["is_premium"],
+            user["added_to_attachment_menu"],
+        )
+        return user
+
+    async def get_entity_object(self, entity) -> Chat:
+        """Get entity object from entity dict.
+
+        Parameters
+        ----------
+        entity: `dict`
+            The entity dict."""
+        return Chat(entity)
+
+    async def get_entity(self, entity_id) -> Chat:
+        """Get entity from id.
+
+        Parameters
+        ----------
+        entity_id: `int` or `str`
+            The entity id or username of the target supergroup or channel (in the format @channelusername)"""
+        raw = await self.send("getChat", chat_id=entity_id)
+        return await self.get_entity_object(raw)
