@@ -1,6 +1,7 @@
 from .chatphoto import ChatPhoto
 from .message import Message
 from .chatpermissions import ChatPermissions
+from .chatlocation import ChatLocation
 
 
 class Chat:
@@ -104,3 +105,5 @@ class Chat:
         self.can_set_sticker_set = data.get("can_set_sticker_set")
         self.linked_chat_id = data.get("linked_chat_id")
         self.location = data.get("location")
+        if self.location:
+            self.location = ChatLocation(self.location)
