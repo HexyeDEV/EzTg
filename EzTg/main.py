@@ -1,8 +1,8 @@
 import aiohttp
 import requests
 
-from .user import User
 from .chat import Chat
+from .user import User
 
 
 class Parse(dict):
@@ -406,7 +406,7 @@ class TelegramClient:
         ----------
         message: `dict`
             The message object."""
-        
+
         sender = message["from"]
         user = User(
             sender["id"],
@@ -422,7 +422,7 @@ class TelegramClient:
 
     async def get_user_object(self, user) -> User:
         """Get user object from user dict.
-        
+
         Parameters
         ----------
         user: `dict`
@@ -454,7 +454,7 @@ class TelegramClient:
         Parameters
         ----------
         entity_id: `int` or `str`
-            The entity id or username of the target supergroup or channel (in the format @channelusername)"""
+            The entity id or username of the target supergroup or channel (in the format @channelusername)
+        """
         raw = await self.send("getChat", chat_id=entity_id)
         return await self.get_entity_object(raw)
-    
