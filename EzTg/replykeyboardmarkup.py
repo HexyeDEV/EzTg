@@ -14,4 +14,4 @@ class ReplyKeyboardMarkup:
         self.keyboard[-1].append({"text": text, "request_user": request_user, "request_chat": request_chat, "request_contact": request_contact, "request_location": request_location, "request_poll": request_poll, "web_app": web_app})
     
     def send(self):
-        return {"reply_markup_keyboard": self.keyboard, "is_persistent": self.is_persistent, "resize_keyboard": self.resize_keyboard, "one_time_keyboard": self.one_time_keyboard, "selective": self.selective}
+        return {"reply_markup": self.keyboard, "is_persistent": self.is_persistent, "resize_keyboard": self.resize_keyboard, "one_time_keyboard": self.one_time_keyboard, "selective": self.selective}
