@@ -1,9 +1,10 @@
 from .user import User
 from .chat import Chat
 
+
 class Message:
     """Represents a message.
-    
+
     Attributes
     ----------
     message_id: `int`
