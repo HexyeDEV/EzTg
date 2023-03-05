@@ -1,8 +1,9 @@
 from .location import Location
 
+
 class ChatLocation:
     """Represents a location to which a chat is connected.
-    
+
     Attributes
     ----------
     location: `Location`
