@@ -1,6 +1,7 @@
 from .chatphoto import ChatPhoto
 from .message import Message
 
+
 class Chat:
     """Represents a telegram chat.
 
