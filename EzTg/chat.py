@@ -1,6 +1,6 @@
+from .chatpermissions import ChatPermissions
 from .chatphoto import ChatPhoto
 from .message import Message
-from .chatpermissions import ChatPermissions
 
 
 class Chat:
