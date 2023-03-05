@@ -1,11 +1,7 @@
 from .chatpermissions import ChatPermissions
 from .chatphoto import ChatPhoto
 from .message import Message
-<<<<<<< HEAD
-from .chatpermissions import ChatPermissions
 from .chatlocation import ChatLocation
-=======
->>>>>>> d4c95a189ec71e783e7604fcd1e46420e6f8c79f
 
 
 class Chat:
