@@ -1,4 +1,5 @@
 from .chatphoto import ChatPhoto
+from .message import Message
 
 class Chat:
     """Represents a telegram chat.
@@ -86,6 +87,8 @@ class Chat:
         self.description = data.get("description")
         self.invite_link = data.get("invite_link")
         self.pinned_message = data.get("pinned_message")
+        if self.pinned_message:
+            self.pinned_message = Message(self.pinned_message)
         self.permissions = data.get("permissions")
         self.slow_mode_delay = data.get("slow_mode_delay")
         self.message_auto_delete_time = data.get("message_auto_delete_time")
