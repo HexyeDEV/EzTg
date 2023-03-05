@@ -1,5 +1,6 @@
 from .chatphoto import ChatPhoto
 from .message import Message
+from .chatpermissions import ChatPermissions
 
 
 class Chat:
@@ -91,6 +92,8 @@ class Chat:
         if self.pinned_message:
             self.pinned_message = Message(self.pinned_message)
         self.permissions = data.get("permissions")
+        if self.permissions:
+            self.permissions = ChatPermissions(self.permissions)
         self.slow_mode_delay = data.get("slow_mode_delay")
         self.message_auto_delete_time = data.get("message_auto_delete_time")
         self.has_aggressive_anti_spam_enabled = data.get(
