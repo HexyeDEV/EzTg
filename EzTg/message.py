@@ -1,6 +1,6 @@
 from .chat import Chat
-from .user import User
 from .location import Location
+from .user import User
 
 
 class Message:
