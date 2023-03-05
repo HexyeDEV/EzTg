@@ -1,5 +1,6 @@
 from .chat import Chat
 from .user import User
+from .location import Location
 
 
 class Message:
@@ -114,7 +115,9 @@ class Message:
         self.forward_date = data.get("forward_date")
         self.is_topic_message = data.get("is_topic_message")
         self.is_automatic_forward = data.get("is_automatic_forward")
-        self.reply_to_message = Message(data.get("reply_to_message"))
+        self.reply_to_message = data.get("reply_to_message")
+        if self.reply_to_message:
+            self.reply_to_message = Message(self.reply_to_message)
         self.via_bot = User(data.get("via_bot"))
         self.edit_date = data.get("edit_date")
         self.has_protected_content = data.get("has_protected_content")
@@ -138,6 +141,8 @@ class Message:
         self.poll = data.get("poll")
         self.venue = data.get("venue")
         self.location = data.get("location")
+        if self.location:
+            self.location = Location(self.location)
         self.new_chat_members = data.get("new_chat_members")
         if self.new_chat_members:
             self.new_chat_members = [User(x) for x in self.new_chat_members]
