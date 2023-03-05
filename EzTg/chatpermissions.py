@@ -1,6 +1,6 @@
 class ChatPermissions:
     """Describes actions that a non-administrator user is allowed to take in a chat.
-    
+
     Attributes
     ----------
     can_send_messages: `bool`
