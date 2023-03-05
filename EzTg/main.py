@@ -457,3 +457,4 @@ class TelegramClient:
             The entity id or username of the target supergroup or channel (in the format @channelusername)"""
         raw = await self.send("getChat", chat_id=entity_id)
         return await self.get_entity_object(raw)
+    
