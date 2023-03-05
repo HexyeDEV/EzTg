@@ -1,8 +1,8 @@
 import aiohttp
 import requests
 
-from .user import User
 from .chat import Chat
+from .user import User
 
 
 class Parse(dict):
