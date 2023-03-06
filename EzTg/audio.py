@@ -1,8 +1,9 @@
 from .photosize import PhotoSize
 
+
 class Audio:
     """Represents an audio file to be treated as music by the Telegram clients.
-    
+
     Attributes
     ----------
     file_id: `str`
@@ -37,4 +38,3 @@ class Audio:
         self.thumb = data.get("thumb")
         if self.thumb:
             self.thumb = PhotoSize(self.thumb)
-            
