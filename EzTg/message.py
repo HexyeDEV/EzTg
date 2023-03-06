@@ -1,3 +1,5 @@
+from .animation import Animation
+from .audio import Audio
 from .chat import Chat
 from .location import Location
 from .user import User
@@ -125,7 +127,11 @@ class Message:
         self.author_signature = data.get("author_signature")
         self.text = data.get("text")
         self.animation = data.get("animation")
+        if self.animation:
+            self.animation = Animation(self.animation)
         self.audio = data.get("audio")
+        if self.audio:
+            self.audio = Audio(self.audio)
         self.document = data.get("document")
         self.photo = data.get("photo")
         self.sticker = data.get("sticker")
