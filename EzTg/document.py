@@ -1,8 +1,9 @@
 from .photosize import PhotoSize
 
+
 class Document:
     """Represents a general file (as opposed to photos, voice messages and audio files).
-    
+
     Attributes
     ----------
     file_id: `str`
@@ -18,7 +19,7 @@ class Document:
     file_size: `int`
         Optional. File size.
     """
-    
+
     def __init__(self, data):
         self.file_id = data["file_id"]
         self.file_unique_id = data["file_unique_id"]
