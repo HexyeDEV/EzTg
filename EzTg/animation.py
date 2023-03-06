@@ -1,3 +1,5 @@
+from .photo_size import PhotoSize
+
 class Animation:
     """Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound).
     
@@ -29,7 +31,9 @@ class Animation:
         self.width = data['width']
         self.height = data['height']
         self.duration = data['duration']
-        self.thumb = PhotoSize(data['thumb']) if 'thumb' in data else None
-        self.file_name = data['file_name'] if 'file_name' in data else None
-        self.mime_type = data['mime_type'] if 'mime_type' in data else None
-        self.file_size = data['file_size'] if 'file_size' in data else None
+        self.thumb = data.get('thumb')
+        if self.thumb:
+            self.thumb = PhotoSize(self.thumb)
+        self.file_name = data.get('file_name')
+        self.mime_type = data.get('mime_type')
+        self.file_size = data.get('file_size')
