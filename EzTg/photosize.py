@@ -17,8 +17,8 @@ class PhotoSize:
     """
 
     def __init__(self, data):
-        self.file_id = data['file_id']
-        self.file_unique_id = data['file_unique_id']
-        self.width = data['width']
-        self.height = data['height']
-        self.file_size = data.get('file_size')
+        self.file_id = data["file_id"]
+        self.file_unique_id = data["file_unique_id"]
+        self.width = data["width"]
+        self.height = data["height"]
+        self.file_size = data.get("file_size")
