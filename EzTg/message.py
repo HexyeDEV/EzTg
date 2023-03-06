@@ -1,6 +1,7 @@
 from .animation import Animation
 from .audio import Audio
 from .chat import Chat
+from .document import Document
 from .location import Location
 from .user import User
 
@@ -133,6 +134,8 @@ class Message:
         if self.audio:
             self.audio = Audio(self.audio)
         self.document = data.get("document")
+        if self.document:
+            self.document = Document(self.document)
         self.photo = data.get("photo")
         self.sticker = data.get("sticker")
         self.video = data.get("video")
