@@ -36,6 +36,5 @@ class User:
         self.is_premium = data.get("is_premium")
         self.added_to_attachment_menu = data.get("added_to_attachment_menu")
         self.can_join_groups = data.get("can_join_groups")
-        self.can_read_all_group_messages = data.get(
-            "can_read_all_group_messages")
+        self.can_read_all_group_messages = data.get("can_read_all_group_messages")
         self.supports_inline_queries = data.get("supports_inline_queries")
