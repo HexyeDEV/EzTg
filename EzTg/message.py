@@ -3,6 +3,7 @@ from .audio import Audio
 from .chat import Chat
 from .document import Document
 from .location import Location
+from .photosize import PhotoSize
 from .user import User
 
 
@@ -137,6 +138,8 @@ class Message:
         if self.document:
             self.document = Document(self.document)
         self.photo = data.get("photo")
+        if self.photo:
+            self.photo = [PhotoSize(p) for p in self.photo]
         self.sticker = data.get("sticker")
         self.video = data.get("video")
         self.video_note = data.get("video_note")
@@ -159,3 +162,8 @@ class Message:
         if self.left_chat_member:
             self.left_chat_member = User(self.left_chat_member)
         self.new_chat_title = data.get("new_chat_title")
+        self.new_chat_photo = data.get("new_chat_photo")
+        if self.new_chat_photo:
+            self.new_chat_photo = [PhotoSize(p) for p in self.new_chat_photo]
+        self.delete_chat_photo = data.get("delete_chat_photo")
+        self.group_chat_created = data.get("group_chat_created")
