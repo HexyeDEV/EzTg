@@ -66,7 +66,7 @@ class Chat:
         from .chatpermissions import ChatPermissions
         from .chatphoto import ChatPhoto
         from .message import Message
-        
+
         self.id = data["id"]
         self.type = data["type"]
         self.title = data.get("title")
