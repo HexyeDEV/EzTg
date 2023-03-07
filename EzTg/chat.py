@@ -1,9 +1,3 @@
-from .chatlocation import ChatLocation
-from .chatpermissions import ChatPermissions
-from .chatphoto import ChatPhoto
-from .message import Message
-
-
 class Chat:
     """Represents a telegram chat.
 
@@ -68,6 +62,11 @@ class Chat:
     """
 
     def __init__(self, data: dict):
+        from .chatlocation import ChatLocation
+        from .chatpermissions import ChatPermissions
+        from .chatphoto import ChatPhoto
+        from .message import Message
+        
         self.id = data["id"]
         self.type = data["type"]
         self.title = data.get("title")
