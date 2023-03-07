@@ -3,3 +3,4 @@ __author__ = "Hexye"
 
 from .inlinekeyboard import InlineKeyboard
 from .main import TelegramClient
+from .replykeyboardmarkup import ReplyKeyboardMarkup

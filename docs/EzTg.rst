@@ -20,6 +20,14 @@ EzTg.main module
    :undoc-members:
    :show-inheritance:
 
+EzTg.replykeyboardmarkup module
+-------------------------------
+
+.. automodule:: EzTg.replykeyboardmarkup
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 
