@@ -1,8 +1,9 @@
 from .photosize import PhotoSize
 
+
 class Video:
     """Represents a video file.
-    
+
     Attributes
     ----------
     file_id: `str`
@@ -37,4 +38,3 @@ class Video:
         self.file_name = data.get("file_name")
         self.mime_type = data.get("mime_type")
         self.file_size = data.get("file_size")
-        
