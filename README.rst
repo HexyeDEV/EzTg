@@ -16,4 +16,6 @@ Python api wrapper for telegram, easy to clearly choose every parameter for the 
 Telegram support group: https://t.me/EzTg_Api
 Telergam core api: https://core.telegram.org/bots/api
 
-![JetBrains Logo (Main) logo](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png)
+.. image:: https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png
+   :target: https://jb.gg/OpenSourceSupport
+   :alt: JetBrains Logo (Main) logo
