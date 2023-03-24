@@ -5,6 +5,7 @@ from .document import Document
 from .location import Location
 from .photosize import PhotoSize
 from .user import User
+from .videonote import VideoNote
 
 
 class Message:
@@ -143,6 +144,8 @@ class Message:
         self.sticker = data.get("sticker")
         self.video = data.get("video")
         self.video_note = data.get("video_note")
+        if self.video_note:
+            self.video_note = VideoNote(self.video_note)
         self.voice = data.get("voice")
         self.caption = data.get("caption")
         self.caption_entities = data.get("caption_entities")
