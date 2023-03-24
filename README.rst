@@ -14,7 +14,9 @@ EzTg
 Python api wrapper for telegram, easy to clearly choose every parameter for the method you are calling.
 
 Telegram support group: https://t.me/EzTg_Api
+
 Telergam core api: https://core.telegram.org/bots/api
+
 EzTg Documentation: https://EzTg.readthedocs.io
 
 .. image:: https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png
