@@ -1,8 +1,9 @@
 from .photosize import PhotoSize
 
+
 class VideoNote:
     """Represents a video message (available in Telegram apps as of v.4.0).
-    
+
     Attributes:
         file_id: `str`
             Unique identifier for this file.
