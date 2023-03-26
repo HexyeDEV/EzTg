@@ -1,3 +1,7 @@
+from .location import ChatLocation
+from .permissions import ChatPermissions
+from .photo import ChatPhoto
+
 class Chat:
     """Represents a telegram chat.
 
@@ -37,8 +41,8 @@ class Chat:
         Optional. Description, for groups, supergroups and channel chats. Returned only in getChat.
     invite_link: `str`
         Optional. Primary invite link, for groups, supergroups and channel chats. Returned only in getChat.
-    pinned_message: `Message`
-        Optional. The most recent pinned message (by sending date). Returned only in getChat.
+    pinned_message_id: `int`
+        Optional. The most recent pinned message id (by sending date). Returned only in getChat.
     permissions: `ChatPermissions`
         Optional. Default chat member permissions, for groups and supergroups. Returned only in getChat.
     slow_mode_delay: `int`
@@ -62,10 +66,6 @@ class Chat:
     """
 
     def __init__(self, data: dict):
-        from .chatlocation import ChatLocation
-        from .chatpermissions import ChatPermissions
-        from .chatphoto import ChatPhoto
-        from .message import Message
 
         self.id = data["id"]
         self.type = data["type"]
@@ -88,9 +88,7 @@ class Chat:
         self.join_by_request = data.get("join_by_request")
         self.description = data.get("description")
         self.invite_link = data.get("invite_link")
-        self.pinned_message = data.get("pinned_message")
-        if self.pinned_message:
-            self.pinned_message = Message(self.pinned_message)
+        self.pinned_message_id = data.get("pinned_message").get("id")
         self.permissions = data.get("permissions")
         if self.permissions:
             self.permissions = ChatPermissions(self.permissions)

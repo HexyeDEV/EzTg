@@ -13,6 +13,7 @@ class ReplyKeyboardMarkup:
         self.resize_keyboard = resize_keyboard
         self.one_time_keyboard = one_time_keyboard
         self.selective = selective
+        self.input_field_placeholder = input_field_placeholder
 
     def add(
         self,
@@ -62,4 +63,5 @@ class ReplyKeyboardMarkup:
             "resize_keyboard": self.resize_keyboard,
             "one_time_keyboard": self.one_time_keyboard,
             "selective": self.selective,
+            "input_field_placeholder": self.input_field_placeholder,
         }

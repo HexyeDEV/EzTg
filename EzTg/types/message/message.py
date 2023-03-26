@@ -1,10 +1,10 @@
 from .animation import Animation
 from .audio import Audio
-from .chat import Chat
+from ..chat.chat import Chat
 from .document import Document
-from .location import Location
+from ..location import Location
 from .photosize import PhotoSize
-from .user import User
+from ..user.user import User
 from .videonote import VideoNote
 
 

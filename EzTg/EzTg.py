@@ -1,8 +1,7 @@
 import aiohttp
-import requests
 
-from .chat import Chat
-from .user import User
+from .types.chat.chat import Chat
+from .types.user.user import User
 
 
 class Parse(dict):
@@ -26,12 +25,8 @@ class TokenError(Exception):
 class TelegramClient:
 
     def __init__(self, token):
-        if (requests.get("https://api.telegram.org/bot" + token +
-                         "/getMe").json()["ok"] == False):
-            raise TokenError("The token you provided is wrong")
-        else:
-            self.token = token
-            self.api = "https://api.telegram.org/bot{}/{}"
+        self.token = token
+        self.api = "https://api.telegram.org/bot{}/{}"
 
     async def send(self, method, **kwargs):
         """Send a request to the telegram api.
@@ -57,6 +52,8 @@ class TelegramClient:
             The function you want to call when a message is received.
         callback_query: `function`
             The function you want to call when a callback query is received."""
+        if self.send("getMe").ok == False:
+            raise TokenError("The token you provided is wrong")
         offset = None
         while 1:
             update = await self.send("getUpdates", offset=offset)
@@ -71,7 +68,7 @@ class TelegramClient:
                         await callback_query(x)
                         offset = update[-1].update_id + 1
 
-    async def sendMessage(
+    async def send_message(
         self,
         chat_id,
         text,
@@ -122,7 +119,7 @@ class TelegramClient:
                 reply_to_message_id=reply_to_message_id,
             )
 
-    async def deleteMessage(self, chat_id, message_id):
+    async def delete_message(self, chat_id, message_id):
         """Delete a message.
 
         Parameters
@@ -135,7 +132,7 @@ class TelegramClient:
                                chat_id=chat_id,
                                message_id=message_id)
 
-    async def editMessageText(
+    async def edit_message_text(
         self,
         chat_id,
         message_id,
@@ -191,7 +188,7 @@ class TelegramClient:
                 disable_web_page_preview=disable_web_page_preview,
             )
 
-    async def forwardMessage(self,
+    async def forward_message(self,
                              chat_id,
                              from_chat_id,
                              message_id,
@@ -217,7 +214,7 @@ class TelegramClient:
             disable_notification=disable_notification,
         )
 
-    async def getMe(self):
+    async def get_me(self):
         """Get information about the bot."""
         r = await self.send("getMe")
         user = User(
@@ -235,7 +232,7 @@ class TelegramClient:
         )
         return user
 
-    async def copyMessage(
+    async def copy_message(
         self,
         chat_id,
         message_id,
@@ -286,7 +283,7 @@ class TelegramClient:
                 allow_sending_without_reply=allow_sending_without_reply,
             )
 
-    async def exportChatInviteLink(self, chat_id):
+    async def export_chat_invite_link(self, chat_id):
         """Export a chat invite link.
 
         Parameters
@@ -295,7 +292,7 @@ class TelegramClient:
             The chat id you want to make the invite link."""
         return await self.send("exportChatInviteLink", chat_id=chat_id)
 
-    async def createChatInviteLink(
+    async def create_chat_invite_link(
         self,
         chat_id,
         name=None,
@@ -326,7 +323,7 @@ class TelegramClient:
             creates_join_request=creates_join_request,
         )
 
-    async def setChatPhoto(self, chat_id, photo):
+    async def set_chat_photo(self, chat_id, photo):
         """Set the chat photo.
 
         Parameters
@@ -337,7 +334,7 @@ class TelegramClient:
             The photo you want to use."""
         return await self.send("setChatPhoto", chat_id=chat_id, photo=photo)
 
-    async def pinChatMessage(self,
+    async def pin_chat_message(self,
                              chat_id,
                              message_id,
                              disable_notification=False):
@@ -359,7 +356,7 @@ class TelegramClient:
             disable_notification=disable_notification,
         )
 
-    async def unpinChatMessage(self, chat_id, message_id):
+    async def unpin_chat_message(self, chat_id, message_id):
         """Unpin a message.
 
         Parameters
@@ -372,7 +369,7 @@ class TelegramClient:
                                chat_id=chat_id,
                                message_id=message_id)
 
-    async def leaveChat(self, chat_id):
+    async def leave_chat(self, chat_id):
         """Leave a chat.
 
         Parameters
