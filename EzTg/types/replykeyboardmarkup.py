@@ -8,6 +8,20 @@ class ReplyKeyboardMarkup:
         selective=False,
         input_field_placeholder=None,
     ):
+        """Create a new reply keyboard markup
+        
+        Parameters
+        ----------
+        is_persistent : bool
+            Optional. The keyboard is persistent, by default False
+        resize_keyboard : bool
+            Optional. The keyboard is resized, by default False
+        one_time_keyboard : bool
+            Optional. The keyboard is one time, by default False
+        selective : bool
+            Optional. The keyboard is selective, by default False
+        input_field_placeholder : str
+            Optional. The placeholder of the input field, by default None"""
         self.keyboard = [[]]
         self.is_persistent = is_persistent
         self.resize_keyboard = resize_keyboard
@@ -25,6 +39,24 @@ class ReplyKeyboardMarkup:
         request_poll=False,
         web_app=None,
     ):
+        """Add a new button to the keyboard.
+        
+        Parameters
+        ----------
+        text : str
+            The text of the button
+        request_user : str
+            Optional. The request user of the button, by default None
+        request_chat : str
+            Optional. The request chat of the button, by default None
+        request_contact : bool
+            Optional. The request contact of the button, by default False
+        request_location : bool
+            Optional. The request location of the button, by default False
+        request_poll : bool
+            Optional. The request poll of the button, by default False
+        web_app : str
+            Optional. The web app of the button, by default None"""
         self.keyboard[-1].append({
             "text": text,
             "request_user": request_user,
@@ -45,6 +77,24 @@ class ReplyKeyboardMarkup:
         request_poll=False,
         web_app=None,
     ):
+        """Add a new button to the keyboard in a new row.
+        
+        Parameters
+        ----------
+        text : str
+            The text of the button
+        request_user : str
+            Optional. The request user of the button, by default None
+        request_chat : str
+            Optional. The request chat of the button, by default None
+        request_contact : bool
+            Optional. The request contact of the button, by default False
+        request_location : bool
+            Optional. The request location of the button, by default False
+        request_poll : bool
+            Optional. The request poll of the button, by default False
+        web_app : str
+            Optional. The web app of the button, by default None"""
         self.keyboard.append([])
         self.keyboard[-1].append({
             "text": text,
@@ -57,6 +107,7 @@ class ReplyKeyboardMarkup:
         })
 
     def send(self):
+        """Return the keyboard."""
         return {
             "reply_markup": self.keyboard,
             "is_persistent": self.is_persistent,

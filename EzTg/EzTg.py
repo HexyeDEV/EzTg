@@ -23,8 +23,16 @@ class TokenError(Exception):
 
 
 class TelegramClient:
+    """A class that represents a telegram client."""
 
     def __init__(self, token):
+        """Initialize the client.
+
+        Parameters
+        ----------
+        token: `str`
+            The token of your bot."""
+        
         self.token = token
         self.api = "https://api.telegram.org/bot{}/{}"
 
