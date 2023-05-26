@@ -9,7 +9,7 @@ class ReplyKeyboardMarkup:
         input_field_placeholder=None,
     ):
         """Create a new reply keyboard markup
-        
+
         Parameters
         ----------
         is_persistent : bool
@@ -40,7 +40,7 @@ class ReplyKeyboardMarkup:
         web_app=None,
     ):
         """Add a new button to the keyboard.
-        
+
         Parameters
         ----------
         text : str
@@ -78,7 +78,7 @@ class ReplyKeyboardMarkup:
         web_app=None,
     ):
         """Add a new button to the keyboard in a new row.
-        
+
         Parameters
         ----------
         text : str

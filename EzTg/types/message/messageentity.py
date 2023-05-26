@@ -1,8 +1,9 @@
 from ..user import User
 
+
 class MessageEntity:
     """This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
-    
+
     Attributes
     ----------
     type: `str`
@@ -18,6 +19,7 @@ class MessageEntity:
     custom_emoji_id: `str`
         Optional. For “custom_emoji” only, unique identifier of the custom emoji.
     """
+
     def __init__(self, data):
         self.type = data['type']
         self.offset = data['offset']

@@ -1,6 +1,6 @@
 class Voice:
     """This object represents a voice note.
-    
+
     Attributes
     ----------
     file_id: `str`

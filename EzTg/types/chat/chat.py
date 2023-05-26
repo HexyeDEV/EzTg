@@ -2,6 +2,7 @@ from .location import ChatLocation
 from .permissions import ChatPermissions
 from .photo import ChatPhoto
 
+
 class Chat:
     """Represents a telegram chat.
 
