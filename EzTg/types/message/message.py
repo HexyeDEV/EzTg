@@ -6,6 +6,7 @@ from ..location import Location
 from .photosize import PhotoSize
 from ..user.user import User
 from .videonote import VideoNote
+from .voice import Voice
 
 
 class Message:
@@ -147,6 +148,8 @@ class Message:
         if self.video_note:
             self.video_note = VideoNote(self.video_note)
         self.voice = data.get("voice")
+        if self.voice:
+            self.voice = Voice(self.voice)
         self.caption = data.get("caption")
         self.caption_entities = data.get("caption_entities")
         self.has_media_spoiler = data.get("has_media_spoiler")
