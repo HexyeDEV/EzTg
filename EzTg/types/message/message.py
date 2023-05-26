@@ -154,7 +154,9 @@ class Message:
         self.caption = data.get("caption")
         self.caption_entities = data.get("caption_entities")
         if self.caption_entities:
-            self.caption_entities = [MessageEntity(e) for e in self.caption_entities]
+            self.caption_entities = [
+                MessageEntity(e) for e in self.caption_entities
+            ]
         self.has_media_spoiler = data.get("has_media_spoiler")
         self.contact = data.get("contact")
         self.dice = data.get("dice")
