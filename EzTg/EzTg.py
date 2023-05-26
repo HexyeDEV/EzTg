@@ -5,13 +5,18 @@ from .types.user.user import User
 
 
 class Parse(dict):
-
     def __getattr__(*args):
         args = dict.get(*args)
 
-        return (Parse(args) if isinstance(args, dict) else
-                [[Parse(y) for y in x] if isinstance(x, list) else Parse(x)
-                 for x in args] if isinstance(args, list) else args)
+        return (
+            Parse(args)
+            if isinstance(args, dict)
+            else [
+                [Parse(y) for y in x] if isinstance(x, list) else Parse(x) for x in args
+            ]
+            if isinstance(args, list)
+            else args
+        )
 
     __setattr__ = dict.__setitem__
 
@@ -45,9 +50,9 @@ class TelegramClient:
             The method you want to use.
         \*\*kwargs: `dict`
             The parameters you want to send to the method."""
-        async with aiohttp.request("POST",
-                                   self.api.format(self.token, method),
-                                   json=kwargs) as response:
+        async with aiohttp.request(
+            "POST", self.api.format(self.token, method), json=kwargs
+        ) as response:
             r = await response.json()
             return Parse(r)
 
@@ -136,9 +141,7 @@ class TelegramClient:
             The chat id you want to delete the message from.
         message_id: `int`
             The message id you want to delete."""
-        return await self.send("deleteMessage",
-                               chat_id=chat_id,
-                               message_id=message_id)
+        return await self.send("deleteMessage", chat_id=chat_id, message_id=message_id)
 
     async def edit_message_text(
         self,
@@ -196,11 +199,9 @@ class TelegramClient:
                 disable_web_page_preview=disable_web_page_preview,
             )
 
-    async def forward_message(self,
-                              chat_id,
-                              from_chat_id,
-                              message_id,
-                              disable_notification=False):
+    async def forward_message(
+        self, chat_id, from_chat_id, message_id, disable_notification=False
+    ):
         """Foward a message.
 
         Parameters
@@ -342,10 +343,7 @@ class TelegramClient:
             The photo you want to use."""
         return await self.send("setChatPhoto", chat_id=chat_id, photo=photo)
 
-    async def pin_chat_message(self,
-                               chat_id,
-                               message_id,
-                               disable_notification=False):
+    async def pin_chat_message(self, chat_id, message_id, disable_notification=False):
         """Pin a message.
 
         Parameters
@@ -373,9 +371,9 @@ class TelegramClient:
             The chat id you want to unpin the message.
         message_id: `int`
             The message id you want to unpin."""
-        return await self.send("unpinChatMessage",
-                               chat_id=chat_id,
-                               message_id=message_id)
+        return await self.send(
+            "unpinChatMessage", chat_id=chat_id, message_id=message_id
+        )
 
     async def leave_chat(self, chat_id):
         """Leave a chat.

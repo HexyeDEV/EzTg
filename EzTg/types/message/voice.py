@@ -16,8 +16,8 @@ class Voice:
     """
 
     def __init__(self, data):
-        self.file_id = data['file_id']
-        self.file_unique_id = data['file_unique_id']
-        self.duration = data['duration']
-        self.mime_type = data.get('mime_type')
-        self.file_size = data.get('file_size')
+        self.file_id = data["file_id"]
+        self.file_unique_id = data["file_unique_id"]
+        self.duration = data["duration"]
+        self.mime_type = data.get("mime_type")
+        self.file_size = data.get("file_size")

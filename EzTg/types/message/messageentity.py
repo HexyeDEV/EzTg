@@ -21,11 +21,11 @@ class MessageEntity:
     """
 
     def __init__(self, data):
-        self.type = data['type']
-        self.offset = data['offset']
-        self.url = data.get('url')
-        self.user = data.get('user')
+        self.type = data["type"]
+        self.offset = data["offset"]
+        self.url = data.get("url")
+        self.user = data.get("user")
         if self.user:
             self.user = User(self.user)
-        self.language = data.get('language')
-        self.custom_emoji_id = data.get('custom_emoji_id')
+        self.language = data.get("language")
+        self.custom_emoji_id = data.get("custom_emoji_id")
