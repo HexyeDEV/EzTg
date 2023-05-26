@@ -1,11 +1,11 @@
+from ..chat.chat import Chat
+from ..location import Location
+from ..user.user import User
 from .animation import Animation
 from .audio import Audio
-from ..chat.chat import Chat
 from .document import Document
-from ..location import Location
 from .messageentity import MessageEntity
 from .photosize import PhotoSize
-from ..user.user import User
 from .videonote import VideoNote
 from .voice import Voice
 
