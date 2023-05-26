@@ -32,7 +32,7 @@ class TelegramClient:
         ----------
         token: `str`
             The token of your bot."""
-        
+
         self.token = token
         self.api = "https://api.telegram.org/bot{}/{}"
 
@@ -197,10 +197,10 @@ class TelegramClient:
             )
 
     async def forward_message(self,
-                             chat_id,
-                             from_chat_id,
-                             message_id,
-                             disable_notification=False):
+                              chat_id,
+                              from_chat_id,
+                              message_id,
+                              disable_notification=False):
         """Foward a message.
 
         Parameters
@@ -343,9 +343,9 @@ class TelegramClient:
         return await self.send("setChatPhoto", chat_id=chat_id, photo=photo)
 
     async def pin_chat_message(self,
-                             chat_id,
-                             message_id,
-                             disable_notification=False):
+                               chat_id,
+                               message_id,
+                               disable_notification=False):
         """Pin a message.
 
         Parameters

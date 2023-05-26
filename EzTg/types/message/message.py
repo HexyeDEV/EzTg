@@ -1,11 +1,11 @@
+from ..chat.chat import Chat
+from ..location import Location
+from ..user.user import User
 from .animation import Animation
 from .audio import Audio
-from ..chat.chat import Chat
 from .document import Document
-from ..location import Location
 from .messageentity import MessageEntity
 from .photosize import PhotoSize
-from ..user.user import User
 from .videonote import VideoNote
 from .voice import Voice
 
@@ -154,7 +154,9 @@ class Message:
         self.caption = data.get("caption")
         self.caption_entities = data.get("caption_entities")
         if self.caption_entities:
-            self.caption_entities = [MessageEntity(e) for e in self.caption_entities]
+            self.caption_entities = [
+                MessageEntity(e) for e in self.caption_entities
+            ]
         self.has_media_spoiler = data.get("has_media_spoiler")
         self.contact = data.get("contact")
         self.dice = data.get("dice")

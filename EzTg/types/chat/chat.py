@@ -2,6 +2,7 @@ from .location import ChatLocation
 from .permissions import ChatPermissions
 from .photo import ChatPhoto
 
+
 class Chat:
     """Represents a telegram chat.
 
@@ -66,7 +67,6 @@ class Chat:
     """
 
     def __init__(self, data: dict):
-
         self.id = data["id"]
         self.type = data["type"]
         self.title = data.get("title")
