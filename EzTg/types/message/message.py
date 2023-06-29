@@ -10,6 +10,7 @@ from .game import Game
 from .messageentity import MessageEntity
 from .photosize import PhotoSize
 from .poll import Poll
+from .venue import Venue
 from .videonote import VideoNote
 from .voice import Voice
 
@@ -175,6 +176,8 @@ class Message:
         if self.poll:
             self.poll = Poll(self.poll)
         self.venue = data.get("venue")
+        if self.venue:
+            self.venue = Venue(self.venue)
         self.location = data.get("location")
         if self.location:
             self.location = Location(self.location)
