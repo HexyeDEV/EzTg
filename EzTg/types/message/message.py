@@ -3,6 +3,7 @@ from ..location import Location
 from ..user.user import User
 from .animation import Animation
 from .audio import Audio
+from .contact import Contact
 from .document import Document
 from .messageentity import MessageEntity
 from .photosize import PhotoSize
@@ -159,6 +160,8 @@ class Message:
             ]
         self.has_media_spoiler = data.get("has_media_spoiler")
         self.contact = data.get("contact")
+        if self.contact:
+            self.contact = Contact(self.contact)
         self.dice = data.get("dice")
         self.game = data.get("game")
         self.poll = data.get("poll")
