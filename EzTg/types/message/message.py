@@ -4,6 +4,7 @@ from ..user.user import User
 from .animation import Animation
 from .audio import Audio
 from .contact import Contact
+from .dice import Dice
 from .document import Document
 from .messageentity import MessageEntity
 from .photosize import PhotoSize
@@ -163,6 +164,8 @@ class Message:
         if self.contact:
             self.contact = Contact(self.contact)
         self.dice = data.get("dice")
+        if self.dice:
+            self.dice = Dice(self.dice)
         self.game = data.get("game")
         self.poll = data.get("poll")
         self.venue = data.get("venue")
