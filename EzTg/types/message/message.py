@@ -203,4 +203,3 @@ class Message:
         self.reply_markup = data.get("reply_markup")
         if self.reply_markup:
             self.reply_markup = InlineKeyboard(self.reply_markup)
-            
