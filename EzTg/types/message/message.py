@@ -1,4 +1,5 @@
 from ..chat.chat import Chat
+from ..inlinekeyboard import InlineKeyboard
 from ..location import Location
 from ..user.user import User
 from .animation import Animation
@@ -7,7 +8,6 @@ from .contact import Contact
 from .dice import Dice
 from .document import Document
 from .game import Game
-from ..inlinekeyboard import InlineKeyboard
 from .messageentity import MessageEntity
 from .photosize import PhotoSize
 from .poll import Poll

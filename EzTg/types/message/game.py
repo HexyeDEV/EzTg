@@ -1,6 +1,6 @@
 from .animation import Animation
-from .photosize import PhotoSize
 from .messageentity import MessageEntity
+from .photosize import PhotoSize
 
 
 class Game:

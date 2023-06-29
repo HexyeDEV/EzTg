@@ -1,5 +1,6 @@
-import aiohttp
 import asyncio
+
+import aiohttp
 
 from .types.chat.chat import Chat
 from .types.user.user import User
