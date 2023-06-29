@@ -47,7 +47,8 @@ class Poll:
         self.correct_option_id = data.get("correct_option_id")
         self.explanation = data.get("explanation")
         self.explanation_entities = [
-            MessageEntity(entity) for entity in data.get("explanation_entities", [])
+            MessageEntity(entity)
+            for entity in data.get("explanation_entities", [])
         ]
         self.open_period = data.get("open_period")
         self.close_date = data.get("close_date")
