@@ -7,6 +7,7 @@ from .contact import Contact
 from .dice import Dice
 from .document import Document
 from .game import Game
+from ..inlinekeyboard import InlineKeyboard
 from .messageentity import MessageEntity
 from .photosize import PhotoSize
 from .poll import Poll
@@ -111,6 +112,8 @@ class Message:
         Optional. Service message: the group has been created.
     supergroup_chat_created: `bool`
         Optional. Service message: the supergroup has been created.
+    reply_markup: `InlineKeyboard`
+        Optional. Inline keyboard attached to the message. login_url buttons are represented as ordinary url buttons.
     """
 
     def __init__(self, data):
@@ -196,3 +199,8 @@ class Message:
             self.new_chat_photo = [PhotoSize(p) for p in self.new_chat_photo]
         self.delete_chat_photo = data.get("delete_chat_photo")
         self.group_chat_created = data.get("group_chat_created")
+        self.supergroup_chat_created = data.get("supergroup_chat_created")
+        self.reply_markup = data.get("reply_markup")
+        if self.reply_markup:
+            self.reply_markup = InlineKeyboard(self.reply_markup)
+            
