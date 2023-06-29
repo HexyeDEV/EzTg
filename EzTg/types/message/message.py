@@ -9,6 +9,7 @@ from .document import Document
 from .game import Game
 from .messageentity import MessageEntity
 from .photosize import PhotoSize
+from .poll import Poll
 from .videonote import VideoNote
 from .voice import Voice
 
@@ -171,6 +172,8 @@ class Message:
         if self.game:
             self.game = Game(self.game)
         self.poll = data.get("poll")
+        if self.poll:
+            self.poll = Poll(self.poll)
         self.venue = data.get("venue")
         self.location = data.get("location")
         if self.location:
