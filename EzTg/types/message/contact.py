@@ -1,6 +1,6 @@
 class Contact:
     """This object represents a phone contact.
-    
+
     Attributes
     ----------
     phone_number: `str`
@@ -13,7 +13,7 @@ class Contact:
         Optional. Contact's user identifier in Telegram.
     vcard: `str`
         Optional. Additional data about the contact in the form of a vCard."""
-    
+
     def __init__(self, data):
         self.phone_number = data["phone_number"]
         self.first_name = data["first_name"]

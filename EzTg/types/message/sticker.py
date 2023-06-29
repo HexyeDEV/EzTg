@@ -2,9 +2,10 @@ from .file import File
 from .maskposition import MaskPosition
 from .photosize import PhotoSize
 
+
 class Sticker:
     """This object represents a sticker.
-    
+
     Attributes
     ----------
     file_id: `str`

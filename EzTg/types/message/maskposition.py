@@ -1,6 +1,6 @@
 class MaskPosition:
     """Represents a point on the mask position of a sticker sent by the bot.
-    
+
     Attributes
     ----------
     point: `str`

@@ -1,5 +1,6 @@
-import aiohttp
 import asyncio
+
+import aiohttp
 
 from .types.chat.chat import Chat
 from .types.user.user import User
@@ -79,7 +80,8 @@ class TelegramClient:
                             offset = update[-1].update_id + 1
                     elif "callback_query" in x.keys() and callback_query:
                         try:
-                            asyncio.get_event_loop().create_task(callback_query(x))
+                            asyncio.get_event_loop().create_task(
+                                callback_query(x))
                         except Exception as e:
                             raise e
                         finally:

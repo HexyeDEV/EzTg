@@ -1,8 +1,9 @@
 from ..location import Location
 
+
 class Venue:
     """This object represents a venue.
-    
+
     Attributes
     ----------
     location: `Location`

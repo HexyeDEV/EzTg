@@ -1,6 +1,6 @@
 class Dice:
     """This object represents an animated emoji that displays a random value.
-    
+
     Attributes
     ----------
     emoji: `str`
