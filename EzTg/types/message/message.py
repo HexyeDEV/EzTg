@@ -10,6 +10,7 @@ from .game import Game
 from .messageentity import MessageEntity
 from .photosize import PhotoSize
 from .poll import Poll
+from .sticker import Sticker
 from .venue import Venue
 from .videonote import VideoNote
 from .voice import Voice
@@ -149,6 +150,8 @@ class Message:
         if self.photo:
             self.photo = [PhotoSize(p) for p in self.photo]
         self.sticker = data.get("sticker")
+        if self.sticker:
+            self.sticker = Sticker(self.sticker)
         self.video = data.get("video")
         self.video_note = data.get("video_note")
         if self.video_note:
