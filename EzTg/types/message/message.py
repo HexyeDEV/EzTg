@@ -6,6 +6,7 @@ from .audio import Audio
 from .contact import Contact
 from .dice import Dice
 from .document import Document
+from .game import Game
 from .messageentity import MessageEntity
 from .photosize import PhotoSize
 from .videonote import VideoNote
@@ -167,6 +168,8 @@ class Message:
         if self.dice:
             self.dice = Dice(self.dice)
         self.game = data.get("game")
+        if self.game:
+            self.game = Game(self.game)
         self.poll = data.get("poll")
         self.venue = data.get("venue")
         self.location = data.get("location")
