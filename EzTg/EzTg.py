@@ -1,4 +1,5 @@
 import aiohttp
+import asyncio
 
 from .types.chat.chat import Chat
 from .types.user.user import User
@@ -70,11 +71,19 @@ class TelegramClient:
             if update:
                 for x in update:
                     if "message" in x.keys():
-                        await callback(x)
-                        offset = update[-1].update_id + 1
+                        try:
+                            asyncio.get_event_loop().create_task(callback(x))
+                        except Exception as e:
+                            raise e
+                        finally:
+                            offset = update[-1].update_id + 1
                     elif "callback_query" in x.keys() and callback_query:
-                        await callback_query(x)
-                        offset = update[-1].update_id + 1
+                        try:
+                            asyncio.get_event_loop().create_task(callback_query(x))
+                        except Exception as e:
+                            raise e
+                        finally:
+                            offset = update[-1].update_id + 1
 
     async def send_message(
         self,
