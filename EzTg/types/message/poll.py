@@ -32,7 +32,8 @@ class Poll:
     open_period: `int`
         Optional. Amount of time in seconds the poll will be active after creation.
     close_date: `int`
-        Optional. Point in time (Unix timestamp) when the poll will be automatically closed."""
+        Optional. Point in time (Unix timestamp) when the poll will be automatically closed.
+    """
 
     def __init__(self, data):
         self.id = data["id"]
@@ -45,7 +46,8 @@ class Poll:
         self.allows_multiple_answers = data["allows_multiple_answers"]
         self.correct_option_id = data.get("correct_option_id")
         self.explanation = data.get("explanation")
-        self.explanation_entities = [MessageEntity(
-            entity) for entity in data.get("explanation_entities", [])]
+        self.explanation_entities = [
+            MessageEntity(entity) for entity in data.get("explanation_entities", [])
+        ]
         self.open_period = data.get("open_period")
         self.close_date = data.get("close_date")

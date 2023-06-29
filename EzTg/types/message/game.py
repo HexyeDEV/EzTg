@@ -27,6 +27,7 @@ class Game:
         self.description = data["description"]
         self.photo = [PhotoSize(photo) for photo in data["photo"]]
         self.text = data.get("text")
-        self.text_entities = [MessageEntity(
-            entity) for entity in data.get("text_entities", [])]
+        self.text_entities = [
+            MessageEntity(entity) for entity in data.get("text_entities", [])
+        ]
         self.animation = Animation(data.get("animation"))
