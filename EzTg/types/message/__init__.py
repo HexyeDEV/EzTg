@@ -6,6 +6,7 @@ from .document import Document
 from .file import File
 from .game import Game
 from .maskposition import MaskPosition
+from .message_auto_delete_timer_changed import MessageAutoDeleteTimerChanged
 from .messageentity import MessageEntity
 from .photosize import PhotoSize
 from .poll import Poll

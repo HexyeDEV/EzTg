@@ -8,6 +8,7 @@ from .contact import Contact
 from .dice import Dice
 from .document import Document
 from .game import Game
+from .message_auto_delete_timer_changed import MessageAutoDeleteTimerChanged
 from .messageentity import MessageEntity
 from .photosize import PhotoSize
 from .poll import Poll
@@ -112,6 +113,10 @@ class Message:
         Optional. Service message: the group has been created.
     supergroup_chat_created: `bool`
         Optional. Service message: the supergroup has been created.
+    channgel_chat_created: `bool`
+        Optional. Service message: the channel has been created.
+    message_auto_delete_timer_changed: `MessageAutoDeleteTimerChanged`
+        Optional. Service message: auto-delete timer settings changed in the chat.
     reply_markup: `InlineKeyboard`
         Optional. Inline keyboard attached to the message. login_url buttons are represented as ordinary url buttons.
     """
@@ -200,6 +205,10 @@ class Message:
         self.delete_chat_photo = data.get("delete_chat_photo")
         self.group_chat_created = data.get("group_chat_created")
         self.supergroup_chat_created = data.get("supergroup_chat_created")
+        self.channel_chat_created = data.get("channgel_chat_created")
+        self.message_auto_delete_timer_changed = data.get("message_auto_delete_timer_changed")
+        if self.message_auto_delete_timer_changed:
+            self.message_auto_delete_timer_changed = MessageAutoDeleteTimerChanged(self.message_auto_delete_timer_changed)
         self.reply_markup = data.get("reply_markup")
         if self.reply_markup:
             self.reply_markup = InlineKeyboard(self.reply_markup)
