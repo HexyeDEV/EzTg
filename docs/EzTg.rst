@@ -1,21 +1,21 @@
 EzTg package
 ============
 
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   EzTg.types
+
 Submodules
 ----------
 
-EzTg.inlinekeyboard module
---------------------------
-
-.. automodule:: EzTg.inlinekeyboard
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-EzTg.main module
+EzTg.EzTg module
 ----------------
 
-.. automodule:: EzTg.main
+.. automodule:: EzTg.EzTg
    :members:
    :undoc-members:
    :show-inheritance:

@@ -1,5 +1,9 @@
+import asyncio
+
 import aiohttp
-import requests
+
+from .types.chat.chat import Chat
+from .types.user.user import User
 
 
 class Parse(dict):
@@ -21,14 +25,18 @@ class TokenError(Exception):
 
 
 class TelegramClient:
+    """A class that represents a telegram client."""
 
     def __init__(self, token):
-        if (requests.get("https://api.telegram.org/bot" + token +
-                         "/getMe").json()["ok"] == False):
-            raise TokenError("The token you provided is wrong")
-        else:
-            self.token = token
-            self.api = "https://api.telegram.org/bot{}/{}"
+        """Initialize the client.
+
+        Parameters
+        ----------
+        token: `str`
+            The token of your bot."""
+
+        self.token = token
+        self.api = "https://api.telegram.org/bot{}/{}"
 
     async def send(self, method, **kwargs):
         """Send a request to the telegram api.
@@ -54,6 +62,8 @@ class TelegramClient:
             The function you want to call when a message is received.
         callback_query: `function`
             The function you want to call when a callback query is received."""
+        if self.send("getMe").ok == False:
+            raise TokenError("The token you provided is wrong")
         offset = None
         while 1:
             update = await self.send("getUpdates", offset=offset)
@@ -62,13 +72,22 @@ class TelegramClient:
             if update:
                 for x in update:
                     if "message" in x.keys():
-                        await callback(x)
-                        offset = update[-1].update_id + 1
+                        try:
+                            asyncio.get_event_loop().create_task(callback(x))
+                        except Exception as e:
+                            raise e
+                        finally:
+                            offset = update[-1].update_id + 1
                     elif "callback_query" in x.keys() and callback_query:
-                        await callback_query(x)
-                        offset = update[-1].update_id + 1
+                        try:
+                            asyncio.get_event_loop().create_task(
+                                callback_query(x))
+                        except Exception as e:
+                            raise e
+                        finally:
+                            offset = update[-1].update_id + 1
 
-    async def sendMessage(
+    async def send_message(
         self,
         chat_id,
         text,
@@ -95,7 +114,8 @@ class TelegramClient:
         reply_to_message_id: `int`
             If the message is a reply, ID of the original message.
         reply_markup: `dict`
-            Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user."""
+            Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
+        """
         if reply_markup:
             return await self.send(
                 "sendMessage",
@@ -118,7 +138,7 @@ class TelegramClient:
                 reply_to_message_id=reply_to_message_id,
             )
 
-    async def deleteMessage(self, chat_id, message_id):
+    async def delete_message(self, chat_id, message_id):
         """Delete a message.
 
         Parameters
@@ -131,7 +151,7 @@ class TelegramClient:
                                chat_id=chat_id,
                                message_id=message_id)
 
-    async def editMessageText(
+    async def edit_message_text(
         self,
         chat_id,
         message_id,
@@ -161,7 +181,8 @@ class TelegramClient:
         disable_web_page_preview: `bool`
             Disable link previews for links in this message.
         reply_markup: `InlineKeyboard.send`
-            Additional interface options. Use the InlineKeyboard class to create a keyboard and use the send method to send it."""
+            Additional interface options. Use the InlineKeyboard class to create a keyboard and use the send method to send it.
+        """
         if reply_markup:
             return await self.send(
                 "editMessageText",
@@ -186,11 +207,11 @@ class TelegramClient:
                 disable_web_page_preview=disable_web_page_preview,
             )
 
-    async def forwardMessage(self,
-                             chat_id,
-                             from_chat_id,
-                             message_id,
-                             disable_notification=False):
+    async def forward_message(self,
+                              chat_id,
+                              from_chat_id,
+                              message_id,
+                              disable_notification=False):
         """Foward a message.
 
         Parameters
@@ -202,7 +223,8 @@ class TelegramClient:
         message_id: `int`
             The message id you want to forward.
         disable_notification: `bool`
-            Sends the message silently. Users will receive a notification with no sound."""
+            Sends the message silently. Users will receive a notification with no sound.
+        """
         return await self.send(
             "forwardMessage",
             chat_id=chat_id,
@@ -211,11 +233,25 @@ class TelegramClient:
             disable_notification=disable_notification,
         )
 
-    async def getMe(self):
+    async def get_me(self):
         """Get information about the bot."""
-        return await self.send("getMe")
+        r = await self.send("getMe")
+        user = User(
+            r["id"],
+            r["is_bot"],
+            r["first_name"],
+            r["last_name"],
+            r["username"],
+            r["language_code"],
+            r["is_premium"],
+            r["added_to_attachment_menu"],
+            r["can_join_groups"],
+            r["can_read_all_group_messages"],
+            r["supports_inline_queries"],
+        )
+        return user
 
-    async def copyMessage(
+    async def copy_message(
         self,
         chat_id,
         message_id,
@@ -242,7 +278,8 @@ class TelegramClient:
         allow_sending_without_reply: `bool`
             Pass True, if the message should be sent even if the specified replied-to message is not found.
         reply_markup: `InlineKeyboard.send`
-            Additional interface options. Use the InlineKeyboard class to create a keyboard and use the send method to send it."""
+            Additional interface options. Use the InlineKeyboard class to create a keyboard and use the send method to send it.
+        """
         if reply_markup:
             return await self.send(
                 "copyMessage",
@@ -265,7 +302,7 @@ class TelegramClient:
                 allow_sending_without_reply=allow_sending_without_reply,
             )
 
-    async def exportChatInviteLink(self, chat_id):
+    async def export_chat_invite_link(self, chat_id):
         """Export a chat invite link.
 
         Parameters
@@ -274,7 +311,7 @@ class TelegramClient:
             The chat id you want to make the invite link."""
         return await self.send("exportChatInviteLink", chat_id=chat_id)
 
-    async def createChatInviteLink(
+    async def create_chat_invite_link(
         self,
         chat_id,
         name=None,
@@ -305,7 +342,7 @@ class TelegramClient:
             creates_join_request=creates_join_request,
         )
 
-    async def setChatPhoto(self, chat_id, photo):
+    async def set_chat_photo(self, chat_id, photo):
         """Set the chat photo.
 
         Parameters
@@ -316,10 +353,10 @@ class TelegramClient:
             The photo you want to use."""
         return await self.send("setChatPhoto", chat_id=chat_id, photo=photo)
 
-    async def pinChatMessage(self,
-                             chat_id,
-                             message_id,
-                             disable_notification=False):
+    async def pin_chat_message(self,
+                               chat_id,
+                               message_id,
+                               disable_notification=False):
         """Pin a message.
 
         Parameters
@@ -329,7 +366,8 @@ class TelegramClient:
         message_id: `int`
             The message id you want to pin.
         disable_notification: `bool`
-            Sends the message silently. Users will receive a notification with no sound."""
+            Sends the message silently. Users will receive a notification with no sound.
+        """
         return await self.send(
             "pinChatMessage",
             chat_id=chat_id,
@@ -337,7 +375,7 @@ class TelegramClient:
             disable_notification=disable_notification,
         )
 
-    async def unpinChatMessage(self, chat_id, message_id):
+    async def unpin_chat_message(self, chat_id, message_id):
         """Unpin a message.
 
         Parameters
@@ -350,7 +388,7 @@ class TelegramClient:
                                chat_id=chat_id,
                                message_id=message_id)
 
-    async def leaveChat(self, chat_id):
+    async def leave_chat(self, chat_id):
         """Leave a chat.
 
         Parameters
@@ -376,3 +414,45 @@ class TelegramClient:
         message: `dict`
             The message object.s"""
         return message["chat"]["id"]
+
+    async def get_sender_object(self, message) -> User:
+        """Get sender object from message.
+
+        Parameters
+        ----------
+        message: `dict`
+            The message object."""
+
+        sender = message["from"]
+        user = User(sender)
+        return user
+
+    async def get_user_object(self, user) -> User:
+        """Get user object from user dict.
+
+        Parameters
+        ----------
+        user: `dict`
+            The user dict."""
+        user = User(user)
+        return user
+
+    async def get_entity_object(self, entity) -> Chat:
+        """Get entity object from entity dict.
+
+        Parameters
+        ----------
+        entity: `dict`
+            The entity dict."""
+        return Chat(entity)
+
+    async def get_entity(self, entity_id) -> Chat:
+        """Get entity from id.
+
+        Parameters
+        ----------
+        entity_id: `int` or `str`
+            The entity id or username of the target supergroup or channel (in the format @channelusername)
+        """
+        raw = await self.send("getChat", chat_id=entity_id)
+        return await self.get_entity_object(raw)

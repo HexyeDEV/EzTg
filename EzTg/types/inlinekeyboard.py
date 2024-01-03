@@ -1,7 +1,9 @@
 class InlineKeyboard:
 
-    def __init__(self):
-        """Create a new inline keyboard"""
+    def __init__(self, data=None):
+        """Create a new inline keyboard or Represents an inline keyboard that appears right next to the message it belongs to."""
+        if data:
+            self.keyboard = data
         self.keyboard = [[]]
 
     def url(self, text, url):
