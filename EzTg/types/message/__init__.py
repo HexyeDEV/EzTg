@@ -5,6 +5,7 @@ from .dice import Dice
 from .document import Document
 from .file import File
 from .game import Game
+from .invoice import Invoice
 from .maskposition import MaskPosition
 from .message_auto_delete_timer_changed import MessageAutoDeleteTimerChanged
 from .messageentity import MessageEntity
